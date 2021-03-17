@@ -36,10 +36,11 @@ public class MainGUI extends JFrame implements ActionListener {
 	private JButton delete = new JButton("löschen");
 	private JButton details = new JButton("details");
 	private JButton edit = new JButton("ändern");
-
+	
 	private JPanel data = new JPanel();
 	private JPanel haupt  = new JPanel();
 	private JScrollPane sp = new JScrollPane(jt);
+	
 	
 
 	public static void main(String[] args) {
@@ -62,6 +63,14 @@ public class MainGUI extends JFrame implements ActionListener {
  			
 		haupt.add(patientL);
 		haupt.add(newPatient);
+		newPatient.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				DetailGUI d = new DetailGUI();//opens window to create new patients
+				
+			}
+		});
 		
 		
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
