@@ -14,9 +14,14 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
+/**
+ * 
+ * @author Elias
+ *
+ */
 public class MainGUI extends JFrame implements ActionListener {
 
+	
 	private JFrame frame = new JFrame();
 	
 	private String[] columns = {"ID", "Nachname", "Vorname", "Geschlecht", "dob"};
