@@ -8,20 +8,22 @@ import java.awt.event.WindowEvent;
 
 public class NewPatientGUI extends JFrame implements ActionListener {
     private JFrame frame = new JFrame();
-    private JPanel formular = new JPanel();
     private JPanel titlePanel = new JPanel();
+    private JPanel formular = new JPanel();
     private JPanel buttonsPanel = new JPanel();
 
-    private JLabel newTask = new JLabel("New Task");
-    private JLabel title = new JLabel("Title*:", JLabel.LEFT);
-    private JLabel dueDate = new JLabel("Due Date:");
-    private JLabel priority = new JLabel("Priority:");
-    private JLabel description = new JLabel("Description*:");
+    ImageIcon image = new ImageIcon("/Users/lima/Desktop/e-Health/src/images/personIcon.png");
 
-    private JTextField titleF = new JTextField("");
-    private JTextField dueDateF = new JTextField("");
-    private JTextField priorityF = new JTextField("");
-    private JTextField descriptionF = new JTextField("");
+    private JLabel newPatient = new JLabel("New Patient", image, JLabel.LEFT);
+    private JLabel vorname = new JLabel("Vorname:");
+    private JLabel nachname = new JLabel("Nachname:");
+    private JLabel geschlecht = new JLabel("Geschlecht:");
+    private JLabel dob = new JLabel("DOB:");
+
+    private JTextField vornameF = new JTextField("");
+    private JTextField nachnameF = new JTextField("");
+    private JTextField geschlechtF = new JTextField("");
+    private JTextField dobF = new JTextField("");
 
     private JButton cancel = new JButton("Cancel");
     private JButton add = new JButton("Add");
@@ -41,37 +43,37 @@ public class NewPatientGUI extends JFrame implements ActionListener {
         frame.add(buttonsPanel, BorderLayout.SOUTH);
 
         // Elements
-        titlePanel.add(newTask);
-        formular.add(title);
-        formular.add(titleF);
-        formular.add(dueDate);
-        formular.add(dueDateF);
-        formular.add(priority);
-        formular.add(priorityF);
-        formular.add(description);
-        formular.add(descriptionF);
+        titlePanel.add(newPatient);
+        formular.add(vorname);
+        formular.add(vornameF);
+        formular.add(nachname);
+        formular.add(nachnameF);
+        formular.add(geschlecht);
+        formular.add(geschlechtF);
+        formular.add(dob);
+        formular.add(dobF);
         buttonsPanel.add(cancel);
         buttonsPanel.add(add);
 
         // Design
-        newTask.setFont(new Font("Arial",Font.PLAIN,30));
-        title.setBackground(new Color(189,191,242));
-        title.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        title.setOpaque(true);
-        dueDate.setBackground(new Color(189,191,242));
-        dueDate.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        dueDate.setOpaque(true);
-        priority.setBackground(new Color(189,191,242));
-        priority.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        priority.setOpaque(true);
-        description.setBackground(new Color(189,191,242));
-        description.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        description.setOpaque(true);
+        newPatient.setFont(new Font("Arial",Font.PLAIN,30));
+        vorname.setBackground(new Color(189,191,242));
+        vorname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        vorname.setOpaque(true);
+        nachname.setBackground(new Color(189,191,242));
+        nachname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        nachname.setOpaque(true);
+        geschlecht.setBackground(new Color(189,191,242));
+        geschlecht.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        geschlecht.setOpaque(true);
+        dob.setBackground(new Color(189,191,242));
+        dob.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        dob.setOpaque(true);
 
         // Borders
         formular.setBorder(BorderFactory.createEmptyBorder(0,40,10,40));
         titlePanel.setBorder(BorderFactory.createEmptyBorder(20,40,10,40));
-        buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0,40,0,40));
+        buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0,40,15,40));
 
         //ActionListeners
         cancel.addActionListener(new ActionListener() {
@@ -80,7 +82,7 @@ public class NewPatientGUI extends JFrame implements ActionListener {
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
-        frame.setTitle("Add New Task");
+        frame.setTitle("Add New Patient");
         frame.setSize(500, 400);
         frame.setVisible(true);
     }
