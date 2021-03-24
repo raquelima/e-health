@@ -12,7 +12,7 @@ public class NewPatientGUI extends JFrame implements ActionListener {
     private JPanel formular = new JPanel();
     private JPanel buttonsPanel = new JPanel();
 
-    ImageIcon image = new ImageIcon("/Users/lima/Desktop/e-Health/src/images/personIcon.png");
+    ImageIcon image = new ImageIcon("../images/personIcon.png");
 
     private JLabel newPatient = new JLabel("New Patient", image, JLabel.LEFT);
     private JLabel vorname = new JLabel("Vorname:");

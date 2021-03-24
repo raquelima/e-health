@@ -4,14 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -23,25 +16,18 @@ import javax.swing.table.TableCellRenderer;
  */
 public class MainGUI extends JFrame implements ActionListener {
 
-	
 	private JFrame frame = new JFrame();
-	
 
 	JTable table;
 	 DefaultTableModel dm = new DefaultTableModel();
 
-	private JLabel patientL = new JLabel("Patient Listing");
+	ImageIcon image = new ImageIcon("../images/personIcon.png");
+	private JLabel patientL = new JLabel("Patient Listing", image, JLabel.LEFT);
 	private JButton newPatient = new JButton("+ new Patient");
-	
-	private JButton delete = new JButton("löschen");
-	private JButton details = new JButton("details");
-	private JButton edit = new JButton("ändern");
-	
+
 	private JPanel data = new JPanel();
 	private JPanel haupt  = new JPanel();
 	private JScrollPane scrollP;
-	
-	
 
 	public static void main(String[] args) {
 		MainGUI a = new MainGUI();
@@ -109,7 +95,10 @@ class JTableButtonRenderer implements TableCellRenderer {
 	}
 }
 class JTableButtonModel extends AbstractTableModel {
-	private Object[][] rows = {{"001", "Mattern", "Raquel", "M", "05.06.2002", new JButton("Löschen"), new JButton("Detail"), new JButton("ändern")}};
+	JButton delete;
+	JButton details;
+	JButton edit;
+	private Object[][] rows = {{"001", "Mattern", "Raquel", "M", "05.06.2002", delete = new JButton("Löschen"), details = new JButton("Detail"), edit = new JButton("ändern")}};
 	private String[] columns = {"ID", "Nachname", "Vorname", "Geschlecht", "dob", " ", " ", " "};
 	public String getColumnName(int column) {
 		return columns[column];
