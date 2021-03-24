@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,7 +25,8 @@ public class MainGUI extends JFrame implements ActionListener {
 	
 	private String[] columns = {"ID", "Nachname", "Vorname", "Geschlecht", "dob"};
 	private String[][] rows = {{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},{"ID", "Nachname", "Vorname", "Geschlecht", "dob"},};
-	JTable jt = new JTable(rows,columns);  
+
+	JTable jt = new JTable(rows,columns);
 	 DefaultTableModel dm = new DefaultTableModel();
 
 	private JLabel patientL = new JLabel("Patient Listing");
@@ -49,30 +48,37 @@ public class MainGUI extends JFrame implements ActionListener {
 
 	public MainGUI() {
 
+		//Layouts
 		frame.setLayout(new BorderLayout());
-		haupt.setLayout(new GridLayout(1,2));
+		haupt.setLayout(new BorderLayout());
 		data.setLayout(new BorderLayout());
 		frame.add(haupt, BorderLayout.NORTH);
-		haupt.setBorder(BorderFactory.createEmptyBorder(0,100,0,100)); 
 		frame.add(data, BorderLayout.CENTER);
-		data.setBorder(BorderFactory.createEmptyBorder(0,100,100,100)); 
-		
-		data.add(sp);
-		
 		jt.setEnabled(false);
- 			
-		haupt.add(patientL);
-		haupt.add(newPatient);
+
+		//Elements
+		data.add(sp);
+		haupt.add(patientL, BorderLayout.WEST);
+		haupt.add(newPatient, BorderLayout.EAST);
+
+		//Design
+		patientL.setFont(new Font("Arial",Font.PLAIN,35));
+
+		//Borders
+		haupt.setBorder(BorderFactory.createEmptyBorder(20,100,20,100));
+		data.setBorder(BorderFactory.createEmptyBorder(0,100,50,100));
+
+		//Buttons
 		newPatient.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DetailGUI d = new DetailGUI();//opens window to create new patients
+				NewPatientGUI d = new NewPatientGUI();//opens window to create new patients
 				
 			}
 		});
 		
-		
+		// Window Settings
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setTitle("e-Health");
 		frame.setSize(1500, 1000);
