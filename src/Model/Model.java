@@ -46,7 +46,7 @@ public class Model {
 
     public AbstractTableModel getModel() {
 
-        String[] reihen = new String[]{"Patient ID", "Nachname", "Vorname", "Geschlecht", "DOB", "delete", "detail", "edit"};
+        String[] reihen = new String[]{"Patient ID", "Nachname", "Vorname", "Geschlecht", "DOB", "Details", "Edit", "Delete"};
 
         return new AbstractTableModel() {
             @Override

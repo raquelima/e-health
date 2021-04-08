@@ -8,19 +8,19 @@ public class PatientRowDt {
     private String vorname;
     private String geschlecht;
     private String dob;
-    private JButton delete;
     private JButton edit;
     private JButton details;
+    private JButton delete;
 
-    public PatientRowDt(String patientID, String nachname, String vorname, String geschlecht, String dob,  JButton delete, JButton edit, JButton details) {
+    public PatientRowDt(String patientID, String nachname, String vorname, String geschlecht, String dob, JButton edit, JButton details, JButton delete) {
         this.patientID = patientID;
         this.nachname = nachname;
         this.vorname = vorname;
         this.geschlecht = geschlecht;
         this.dob = dob;
-        this.delete = delete;
         this.edit = edit;
         this.details = details;
+        this.delete = delete;
     }
 
     public String getPatientID() {
@@ -89,6 +89,6 @@ public class PatientRowDt {
     }
 
     public Object[] getAsArray(){
-        return new Object[]{getTitle(),getCheckBox(),getDelete(),getEdit(),getDetails()};
+        return new Object[]{getPatientID(),getNachname(), getVorname(),getGeschlecht(),getDob(),getEdit(),getDetails(),getDelete()};
     }
 }

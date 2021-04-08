@@ -9,19 +9,22 @@ public class PatientDt {
     private String geschlecht;
     private String dob;
     private double groesse;
+    private double gewicht;
     private String wohnort;
     private String infos;
     private String medikamente;
-    private boolean status;
+    private String status;
     private String arzt;
     private String vorerkrankungen;
 
-    public PatientDt(String patientID, String nachname, String vorname, String geschlecht, String dob, double groesse, String wohnort, String infos, String medikamente, boolean status, String arzt, String vorerkrankungen) {
+    public PatientDt(String patientID, String nachname, String vorname, String geschlecht, String dob, double groesse, double gewicht, String wohnort, String infos, String medikamente, String status, String arzt, String vorerkrankungen) {
         this.patientID = patientID;
         this.nachname = nachname;
         this.vorname = vorname;
         this.geschlecht = geschlecht;
+        this.dob = dob;
         this.groesse = groesse;
+        this.gewicht = gewicht;
         this.wohnort = wohnort;
         this.infos = infos;
         this.medikamente = medikamente;
@@ -78,6 +81,14 @@ public class PatientDt {
         this.groesse = groesse;
     }
 
+    public double getGewicht() {
+        return gewicht;
+    }
+
+    public void setGewicht(double gewicht) {
+        this.gewicht = gewicht;
+    }
+
     public String getWohnort() {
         return wohnort;
     }
@@ -102,11 +113,11 @@ public class PatientDt {
         this.medikamente = medikamente;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

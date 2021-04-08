@@ -15,6 +15,7 @@ public class Controller {
     private MainGUI mainGUI;
     private DetailGUI detailGUI;
     private NewPatientGUI newPatientGUI;
+    private EditGUI editGUI;
 
 
 
@@ -28,18 +29,23 @@ public class Controller {
     }
 
     public void setMainGUIVis() {
-        cleanMainView();
+        cleanView();
         mainGUI = new MainGUI(this);
     }
 
     public void setDetailGUIVis(int index) {
-        cleanMainView();
+        cleanView();
         detailGUI = new DetailGUI(this, index);
     }
 
     public void setNewPatientGUIVis() {
-        cleanMainView();
+        cleanView();
         newPatientGUI = new NewPatientGUI(this);
+    }
+
+    public void setEditGUIVis(int index) {
+        cleanView();
+        editGUI = new EditGUI(this, index);
     }
 
     public void deletePatient(int length){
@@ -55,13 +61,16 @@ public class Controller {
     }
 
 
-    private void cleanMainView() {
+    private void cleanView() {
 
         if (detailGUI != null) {
             detailGUI.DisposeView();
         }
         if (newPatientGUI != null) {
             newPatientGUI.DisposeView();
+        }
+        if (editGUI != null) {
+            editGUI.DisposeView();
         }
 
     }

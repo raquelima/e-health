@@ -3,25 +3,20 @@ package GUI;
 import Controller.Controller;
 import Data.PatientDt;
 import Data.PatientRowDt;
-import Data.PatientRowDt;
-import Data.PatientDt;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-public class NewPatientGUI {
-
+public class EditGUI extends JFrame implements ActionListener {
     private JFrame frame = new JFrame();
     private JPanel formular = new JPanel();
     private JPanel titlePanel = new JPanel();
     private JPanel buttonsPanel = new JPanel();
+
+    private Controller controller;
 
     private JLabel newPatient = new JLabel("New Patient");
     private JLabel patientID = new JLabel("Patient ID:");
@@ -58,11 +53,21 @@ public class NewPatientGUI {
     private JTextField arztF = new JTextField("");
     private JTextField vorerkrankungenF = new JTextField("");
 
-    private JButton cancel = new JButton("Cancel");
-    private JButton add = new JButton("Add");
+    private JButton back = new JButton("Back to list");
+    private JButton save = new JButton("Save");
 
-    public NewPatientGUI(Controller controller) {
+    public EditGUI(Controller controller, int index) {
+        this.controller = controller;
 
+        addElements(index);
+
+        //Window Settings
+        frame.setTitle("Edit Patient");
+        frame.setSize(870, 856);
+        frame.setVisible(true);
+    }
+
+    private void addElements(int index){
         // Layout
         frame.setLayout(new BorderLayout());
         formular.setLayout(new GridLayout(13,2,5,10));
@@ -73,40 +78,57 @@ public class NewPatientGUI {
         frame.add(buttonsPanel, BorderLayout.SOUTH);
 
         // Elements
+        PatientDt patient = controller.getPatientDetails(index);
+        PatientRowDt row = controller.getRowDetails(index);
+
         titlePanel.add(newPatient);
+        newPatient.setText(patient.getNachname());
         formular.add(patientID);
         formular.add(patientIdF);
+        patientIdF.setText(patient.getPatientID());
+        patientIdF.setEditable(false);
         formular.add(nachname);
         formular.add(nachnameF);
+        nachnameF.setText(patient.getNachname());
         formular.add(vorname);
         formular.add(vornameF);
+        vornameF.setText(patient.getVorname());
         formular.add(geschlecht);
         formular.add(geschlechtF);
+        geschlechtF.setSelectedItem(patient.getGeschlecht());
         formular.add(dob);
         formular.add(dateField);
-        dateField.setValue(LocalDate.now(ZoneId.systemDefault()));
+        dateField.setText(patient.getDob());
         formular.add(status);
         formular.add(statusF);
+        statusF.setSelectedItem(patient.getStatus());
         formular.add(groesse);
         formular.add(groesseF);
+        groesseF.setText(String.valueOf(patient.getGroesse()));
         formular.add(gewicht);
         formular.add(gewichtF);
+        gewichtF.setText(String.valueOf(patient.getGewicht()));
         formular.add(wohnort);
         formular.add(wohnortF);
+        wohnortF.setText(patient.getWohnort());
         formular.add(infos);
         formular.add(infosF);
+        infosF.setText(patient.getInfos());
         formular.add(medikamente);
         formular.add(medikamenteF);
+        medikamenteF.setText(patient.getMedikamente());
         formular.add(arzt);
         formular.add(arztF);
+        arztF.setText(patient.getArzt());
         formular.add(vorerkrankungen);
         formular.add(vorerkrankungenF);
-        buttonsPanel.add(cancel);
-        buttonsPanel.add(add);
+        vorerkrankungenF.setText(patient.getVorerkrankungen());
+
+        buttonsPanel.add(back);
+        buttonsPanel.add(save);
 
         // Design
         newPatient.setFont(new Font("",Font.PLAIN,30));
-        newPatient.setForeground(new Color(68, 68, 68));
         patientID.setBackground(new Color(189,191,242));
         patientID.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         patientID.setOpaque(true);
@@ -153,58 +175,41 @@ public class NewPatientGUI {
         titlePanel.setBorder(BorderFactory.createEmptyBorder(20,40,10,40));
         buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0,40,20,40));
 
-        //ActionListeners
-        cancel.addActionListener(e -> this.frame.dispose());
-        add.addActionListener(new ActionListener() {
+        //Button
+        back.addActionListener(e -> this.frame.dispose());
+        save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(nachnameF.getText().equals("") || vornameF.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please fill all of the required fields", "Field required", JOptionPane.ERROR_MESSAGE);
-                    if(nachnameF.getText().equals("")) {
-                        nachnameF.setBackground(new Color(255,105,97)); }
-                    if(vornameF.getText().equals("")) {
-                        vornameF.setBackground(new Color(255,105,97));}
-                } else {
 
-                    JButton details = new JButton("Details");
+                patient.setNachname(nachnameF.getText());
+                row.setNachname(nachnameF.getText());
+                patient.setVorname(vornameF.getText());
+                row.setVorname(vornameF.getText());
+                patient.setGeschlecht((String) geschlechtF.getSelectedItem());
+                row.setGeschlecht((String) geschlechtF.getSelectedItem());
+                patient.setDob(dateField.getText());
+                row.setDob(dateField.getText());
+                patient.setStatus((String) statusF.getSelectedItem());
+                patient.setGroesse(Double.parseDouble(groesseF.getText()));
+                patient.setGewicht(Double.parseDouble(gewichtF.getText()));
+                patient.setWohnort(wohnortF.getText());
+                patient.setInfos(infosF.getText());
+                patient.setMedikamente(medikamenteF.getText());
+                patient.setArzt(arztF.getText());
+                patient.setVorerkrankungen(vorerkrankungenF.getText());
 
-                    JButton edit = new JButton("Edit");
-
-                    JButton delete = new JButton("Delete");
-
-                    PatientDt data = new PatientDt(patientIdF.getText(), nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), Double.parseDouble(groesseF.getText()),Double.parseDouble(gewichtF.getText()), wohnortF.getText(), infosF.getText(), medikamenteF.getText(),  statusF.getSelectedItem().toString(), arztF.getText(), vorerkrankungenF.getText());
-                    PatientRowDt row = new PatientRowDt(patientIdF.getText(), nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), details, edit, delete );
-                    controller.newPatient(data, row);
-                    controller.setMainGUIVis();
-                }
-
+                controller.setMainGUIVis();
             }
         });
-
-        //Window Settings
-        frame.setTitle("Add New Patient");
-        frame.setSize(870, 856);
-        frame.setVisible(true);
     }
 
     public void DisposeView() {
         this.frame.dispose();
     }
 
-}
-
-class DateField extends JFormattedTextField {
-
-    private static final long serialVersionUID = -4070878851012651987L;
-
-    public DateField(DateTimeFormatter dateFormatter) {
-        super(dateFormatter.toFormat(LocalDate::from));
-        setPreferredSize(new Dimension(100, 26));
-    }
-
     @Override
-    public LocalDate getValue() {
-        return (LocalDate) super.getValue();
-    }
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
 
+    }
 }
