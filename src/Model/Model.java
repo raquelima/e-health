@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Controller;
 import Data.PatientDt;
 import Data.PatientRowDt;
 
@@ -12,19 +13,38 @@ public class Model {
 
     private ArrayList<PatientRowDt> rows = new ArrayList<>();
 
+    private Controller controller;
+
 
     public void newPatient(PatientDt patient, PatientRowDt row) {
         patients.add(patient);
         rows.add(row);
     }
 
-    public Model() {
-
+    public Model(Controller controller) {
+        this.controller = controller;
     }
 
     public void deletePatient(int length){
+        controller.setNewId();
         rows.remove(length);
         patients.remove(length);
+        for (PatientDt d: patients) {
+            int id = Integer.parseInt(d.getPatientID());
+            if (id > length){
+                id--;
+                d.setPatientID(controller.getID(id));
+            }
+
+        }
+        for (PatientRowDt d: rows) {
+            int id = Integer.parseInt(d.getPatientID());
+            if (id > length){
+                id--;
+                d.setPatientID(controller.getID(id));
+            }
+
+        }
     }
 
     public void deleteAllPatients(){

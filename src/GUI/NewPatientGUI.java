@@ -24,7 +24,6 @@ public class NewPatientGUI {
     private JPanel buttonsPanel = new JPanel();
 
     private JLabel newPatient = new JLabel("New Patient");
-    private JLabel patientID = new JLabel("Patient ID:");
     private JLabel nachname = new JLabel("Nachname:", JLabel.LEFT);
     private JLabel vorname = new JLabel("Vorname:");
     private JLabel geschlecht = new JLabel("Geschlecht:");
@@ -38,7 +37,6 @@ public class NewPatientGUI {
     private JLabel arzt = new JLabel("Arzt:");
     private JLabel vorerkrankungen = new JLabel("Vorerkrankungen:");
 
-    private JTextField patientIdF = new JTextField("");
     private JTextField nachnameF = new JTextField("");
     private JTextField vornameF = new JTextField("");
     private String[] geschlechtOptions = {"weiblich", "männlich", "anderes"};
@@ -65,7 +63,7 @@ public class NewPatientGUI {
 
         // Layout
         frame.setLayout(new BorderLayout());
-        formular.setLayout(new GridLayout(13,2,5,10));
+        formular.setLayout(new GridLayout(12,2,5,10));
         titlePanel.setLayout(new BorderLayout());
         buttonsPanel.setLayout(new GridLayout(1,2));
         frame.add(formular, BorderLayout.CENTER);
@@ -74,8 +72,6 @@ public class NewPatientGUI {
 
         // Elements
         titlePanel.add(newPatient);
-        formular.add(patientID);
-        formular.add(patientIdF);
         formular.add(nachname);
         formular.add(nachnameF);
         formular.add(vorname);
@@ -107,9 +103,6 @@ public class NewPatientGUI {
         // Design
         newPatient.setFont(new Font("",Font.PLAIN,30));
         newPatient.setForeground(new Color(68, 68, 68));
-        patientID.setBackground(new Color(189,191,242));
-        patientID.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        patientID.setOpaque(true);
         nachname.setBackground(new Color(189,191,242));
         nachname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         nachname.setOpaque(true);
@@ -171,9 +164,9 @@ public class NewPatientGUI {
                     JButton edit = new JButton("Edit");
 
                     JButton delete = new JButton("Delete");
-
-                    PatientDt data = new PatientDt(patientIdF.getText(), nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), Double.parseDouble(groesseF.getText()),Double.parseDouble(gewichtF.getText()), wohnortF.getText(), infosF.getText(), medikamenteF.getText(),  statusF.getSelectedItem().toString(), arztF.getText(), vorerkrankungenF.getText());
-                    PatientRowDt row = new PatientRowDt(patientIdF.getText(), nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), details, edit, delete );
+                    String id = controller.getID();
+                    PatientDt data = new PatientDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), Double.parseDouble(groesseF.getText()),Double.parseDouble(gewichtF.getText()), wohnortF.getText(), infosF.getText(), medikamenteF.getText(),  statusF.getSelectedItem().toString(), arztF.getText(), vorerkrankungenF.getText());
+                    PatientRowDt row = new PatientRowDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), details, edit, delete );
                     controller.newPatient(data, row);
                     controller.setMainGUIVis();
                 }

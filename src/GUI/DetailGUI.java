@@ -105,7 +105,7 @@ public class DetailGUI extends JFrame implements ActionListener {
 		dateField.setEditable(false);
 		formular.add(alter);
 		formular.add(alterF);
-		dateField.setEditable(false);
+		alterF.setEditable(false);
 		formular.add(status);
 		formular.add(statusF);
 		statusF.setSelectedItem(patient.getStatus());

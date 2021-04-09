@@ -82,7 +82,7 @@ public class EditGUI extends JFrame implements ActionListener {
         PatientRowDt row = controller.getRowDetails(index);
 
         titlePanel.add(newPatient);
-        newPatient.setText(patient.getNachname());
+        newPatient.setText(patient.getVorname() + " " + patient.getNachname());
         formular.add(patientID);
         formular.add(patientIdF);
         patientIdF.setText(patient.getPatientID());

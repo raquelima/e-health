@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Data.IdGenerator;
 import Data.PatientRowDt;
 import Data.PatientDt;
 import GUI.*;
@@ -16,11 +17,13 @@ public class Controller {
     private DetailGUI detailGUI;
     private NewPatientGUI newPatientGUI;
     private EditGUI editGUI;
+    private IdGenerator idGenerator;
 
 
 
     public Controller() {
-        this.model = new Model();
+        this.model = new Model(this);
+        this.idGenerator = new IdGenerator();
         setMainGUIVis();
     }
 
@@ -72,6 +75,9 @@ public class Controller {
         if (editGUI != null) {
             editGUI.DisposeView();
         }
+        if (mainGUI != null) {
+            mainGUI.DisposeView();
+        }
 
     }
 
@@ -86,6 +92,20 @@ public class Controller {
     public PatientRowDt getRowDetails(int index){
         return model.getRowDetails(index);
     }
+
+    public String getID() {
+        return idGenerator.getID();
+    }
+
+    public String getID(int id){
+        String idText = idGenerator.getID(id);
+        return idText;
+    }
+
+    public void setNewId() {
+        idGenerator.setNewId();
+    }
+
 
 
 }
