@@ -12,6 +12,8 @@ public class Model {
     private ArrayList<PatientDt> patients = new ArrayList<>();
 
     private ArrayList<PatientRowDt> rows = new ArrayList<>();
+    private ArrayList<PatientRowDt> results;
+    ;
 
     private Controller controller;
 
@@ -95,6 +97,46 @@ public class Model {
         };
     }
 
+    public AbstractTableModel getModel(ArrayList<PatientRowDt> result) {
 
+        String[] reihen = new String[]{"Patient ID", "Nachname", "Vorname", "Geschlecht", "DOB", "Details", "Edit", "Delete"};
+
+        return new AbstractTableModel() {
+            @Override
+            public int getRowCount() {
+                return result.size();
+            }
+
+            @Override
+            public int getColumnCount() {
+                return reihen.length;
+            }
+
+            @Override
+            public Object getValueAt(int rowIndex, int columnIndex) {
+                return result.get(rowIndex).getAsArray()[columnIndex];
+            }
+
+            public String getColumnName(int column) {
+                return reihen[column];
+            }
+            public Class getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
+            }
+
+
+        };
+    }
+
+    public ArrayList<PatientRowDt> getResults(String search){
+        results = new ArrayList<>();
+        for (PatientRowDt d: rows) {
+            if (d.getPatientID().equals(search)|| d.getNachname().equals(search) || d.getVorname().equals(search) || d.getGeschlecht().equals(search) || d.getDob().equals(search)){
+                results.add(d);
+            }
+
+        }
+        return results;
+    }
 
 }

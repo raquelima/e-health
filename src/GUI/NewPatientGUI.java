@@ -147,7 +147,10 @@ public class NewPatientGUI {
         buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0,40,20,40));
 
         //ActionListeners
-        cancel.addActionListener(e -> this.frame.dispose());
+        cancel.addActionListener(e -> {
+            this.frame.dispose();
+            controller.setMainGUIVis();
+        });
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -165,7 +168,7 @@ public class NewPatientGUI {
 
                     JButton delete = new JButton("Delete");
                     String id = controller.getID();
-                    PatientDt data = new PatientDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), Double.parseDouble(groesseF.getText()),Double.parseDouble(gewichtF.getText()), wohnortF.getText(), infosF.getText(), medikamenteF.getText(),  statusF.getSelectedItem().toString(), arztF.getText(), vorerkrankungenF.getText());
+                    PatientDt data = new PatientDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), (groesseF.getText().equals("")) ? 0 : Double.parseDouble(groesseF.getText()), (gewichtF.getText().equals("")) ? 0 : Double.parseDouble(gewichtF.getText()), wohnortF.getText(), infosF.getText(), medikamenteF.getText(),  statusF.getSelectedItem().toString(), arztF.getText(), vorerkrankungenF.getText());
                     PatientRowDt row = new PatientRowDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), details, edit, delete );
                     controller.newPatient(data, row);
                     controller.setMainGUIVis();

@@ -31,9 +31,17 @@ public class Controller {
         return model.getModel();
     }
 
+    public AbstractTableModel getModel(ArrayList<PatientRowDt> results) {
+        return model.getModel(results);
+    }
+
     public void setMainGUIVis() {
         cleanView();
         mainGUI = new MainGUI(this);
+    }
+    public void setMainGUIVis(ArrayList<PatientRowDt> results) {
+        cleanView();
+        mainGUI = new MainGUI(this, results);
     }
 
     public void setDetailGUIVis(int index) {
@@ -106,6 +114,9 @@ public class Controller {
         idGenerator.setNewId();
     }
 
-
+    public void search(String search){
+        model.getResults(search);
+        setMainGUIVis(model.getResults(search));
+    }
 
 }

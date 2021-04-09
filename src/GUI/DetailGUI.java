@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 
-public class DetailGUI extends JFrame implements ActionListener {
+public class DetailGUI {
 	private JFrame frame = new JFrame();
 	private JPanel formular = new JPanel();
 	private JPanel titlePanel = new JPanel();
@@ -194,7 +194,10 @@ public class DetailGUI extends JFrame implements ActionListener {
 		buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0,40,20,40));
 
 		//Button
-		back.addActionListener(e -> this.frame.dispose());
+		back.addActionListener(e -> {
+			this.frame.dispose();
+			controller.setMainGUIVis();
+		});
 		edit.addActionListener(e -> controller.setEditGUIVis(index));
 	}
 
@@ -202,9 +205,5 @@ public class DetailGUI extends JFrame implements ActionListener {
 		this.frame.dispose();
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
-	}
 }

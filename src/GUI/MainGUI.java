@@ -1,6 +1,7 @@
 package GUI;
 
 import Controller.Controller;
+import Data.PatientRowDt;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainGUI {
@@ -64,6 +66,16 @@ public class MainGUI {
 		frame.setSize(1349, 867);
 		frame.setVisible(true);
 	}
+	public MainGUI(Controller controller,  ArrayList<PatientRowDt> results) {
+		this.controller = controller;
+
+		addElements();
+		loadTableModel(results);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Patient Listing");
+		frame.setSize(1349, 867);
+		frame.setVisible(true);
+	}
 
 	private void addElements() {
 		searchField.setMargin(new Insets(0, image.getWidth(), 0, 0));
@@ -83,6 +95,12 @@ public class MainGUI {
 		titlePanel.add(newPatient, BorderLayout.EAST);
 		searchPanel.add(patientLabel);
 		searchPanel.add(searchField);
+		searchField.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.search(searchField.getText());
+			}
+		});
 
 		TableCellRenderer tableRenderer;
 		table = new JTable();
@@ -151,6 +169,60 @@ public class MainGUI {
 							@Override
 							public void actionPerformed(ActionEvent e) {
 								controller.deletePatient(rowindex);
+								controller.setMainGUIVis();
+							}
+						});
+					}
+					b.doClick();
+				}
+				if (cell instanceof JCheckBox){
+					JCheckBox c = (JCheckBox) table.getModel().getValueAt(rowindex, columindex);
+					c.setSelected(true);
+					controller.setMainGUIVis();
+				}
+
+				super.mouseClicked(e);
+			}
+		});
+
+	}
+
+	private void loadTableModel(ArrayList<PatientRowDt> showResult) {
+		AbstractTableModel model = controller.getModel(showResult);
+		table.setModel(model);
+
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JTable t = (JTable) e.getComponent();
+				int columindex = t.columnAtPoint(e.getPoint());
+				int rowindex = t.rowAtPoint(e.getPoint());
+				Object cell = table.getModel().getValueAt(rowindex, columindex);
+				if (cell instanceof JButton) {
+					JButton b = (JButton) table.getModel().getValueAt(rowindex, columindex);
+					String index1 = (String) table.getValueAt(rowindex, 0);
+					int index = Integer.parseInt(index1) - 1;
+					if (b.getText() == "Details"){
+						b.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								controller.setDetailGUIVis(index);
+							}
+						});
+					}
+					if (b.getText() == "Edit"){
+						b.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								controller.setEditGUIVis(index);
+							}
+						});
+					}
+					if (b.getText() == "Delete"){
+						b.addActionListener(new ActionListener() {
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								controller.deletePatient(index);
 								controller.setMainGUIVis();
 							}
 						});
