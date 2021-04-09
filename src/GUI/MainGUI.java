@@ -175,11 +175,7 @@ public class MainGUI {
 					}
 					b.doClick();
 				}
-				if (cell instanceof JCheckBox){
-					JCheckBox c = (JCheckBox) table.getModel().getValueAt(rowindex, columindex);
-					c.setSelected(true);
-					controller.setMainGUIVis();
-				}
+
 
 				super.mouseClicked(e);
 			}
@@ -229,11 +225,7 @@ public class MainGUI {
 					}
 					b.doClick();
 				}
-				if (cell instanceof JCheckBox){
-					JCheckBox c = (JCheckBox) table.getModel().getValueAt(rowindex, columindex);
-					c.setSelected(true);
-					controller.setMainGUIVis();
-				}
+
 
 				super.mouseClicked(e);
 			}

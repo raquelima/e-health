@@ -50,7 +50,8 @@ public class EditGUI {
     private JTextField medikamenteF = new JTextField("");
     private String[] statusOptions = {"waiting", "in treatment", "treated"};
     private JComboBox statusF = new JComboBox(statusOptions);
-    private JTextField arztF = new JTextField("");
+    private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. drake ramoray", "Dr. Meredith Grey", "Dr Painus Gregerus"};
+    private JComboBox drF = new JComboBox(drOptions);
     private JTextField vorerkrankungenF = new JTextField("");
 
     private JButton back = new JButton("Back to list");
@@ -118,8 +119,8 @@ public class EditGUI {
         formular.add(medikamenteF);
         medikamenteF.setText(patient.getMedikamente());
         formular.add(arzt);
-        formular.add(arztF);
-        arztF.setText(patient.getArzt());
+        formular.add(drF);
+        drF.setSelectedItem(patient.getArzt());
         formular.add(vorerkrankungen);
         formular.add(vorerkrankungenF);
         vorerkrankungenF.setText(patient.getVorerkrankungen());
@@ -198,7 +199,7 @@ public class EditGUI {
                 patient.setWohnort(wohnortF.getText());
                 patient.setInfos(infosF.getText());
                 patient.setMedikamente(medikamenteF.getText());
-                patient.setArzt(arztF.getText());
+                patient.setArzt((String)drF.getSelectedItem());
                 patient.setVorerkrankungen(vorerkrankungenF.getText());
 
                 controller.setMainGUIVis();

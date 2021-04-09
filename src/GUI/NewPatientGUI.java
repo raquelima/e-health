@@ -53,8 +53,9 @@ public class NewPatientGUI {
     private JTextField medikamenteF = new JTextField("");
     private String[] statusOptions = {"waiting", "in treatment", "treated"};
     private JComboBox statusF = new JComboBox(statusOptions);
-    private JTextField arztF = new JTextField("");
     private JTextField vorerkrankungenF = new JTextField("");
+    private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. drake ramoray", "Dr. Meredith Grey", "Dr Painus Gregerus"};
+    private JComboBox drF = new JComboBox(drOptions);
 
     private JButton cancel = new JButton("Cancel");
     private JButton add = new JButton("Add");
@@ -94,7 +95,7 @@ public class NewPatientGUI {
         formular.add(medikamente);
         formular.add(medikamenteF);
         formular.add(arzt);
-        formular.add(arztF);
+        formular.add(drF);
         formular.add(vorerkrankungen);
         formular.add(vorerkrankungenF);
         buttonsPanel.add(cancel);
@@ -168,7 +169,7 @@ public class NewPatientGUI {
 
                     JButton delete = new JButton("Delete");
                     String id = controller.getID();
-                    PatientDt data = new PatientDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), (groesseF.getText().equals("")) ? 0 : Double.parseDouble(groesseF.getText()), (gewichtF.getText().equals("")) ? 0 : Double.parseDouble(gewichtF.getText()), wohnortF.getText(), infosF.getText(), medikamenteF.getText(),  statusF.getSelectedItem().toString(), arztF.getText(), vorerkrankungenF.getText());
+                    PatientDt data = new PatientDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), (groesseF.getText().equals("")) ? 0 : Double.parseDouble(groesseF.getText()), (gewichtF.getText().equals("")) ? 0 : Double.parseDouble(gewichtF.getText()), wohnortF.getText(), infosF.getText(), medikamenteF.getText(),  statusF.getSelectedItem().toString(), (String) drF.getSelectedItem(), vorerkrankungenF.getText());
                     PatientRowDt row = new PatientRowDt(id, nachnameF.getText(), vornameF.getText(), (String) geschlechtF.getSelectedItem(), dateField.getText(), details, edit, delete );
                     controller.newPatient(data, row);
                     controller.setMainGUIVis();

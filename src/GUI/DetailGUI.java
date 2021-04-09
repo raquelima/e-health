@@ -36,8 +36,7 @@ public class DetailGUI {
 	private JTextField patientIdF = new JTextField("");
 	private JTextField nachnameF = new JTextField("");
 	private JTextField vornameF = new JTextField("");
-	private String[] geschlechtOptions = {"weiblich", "männlich", "anderes"};
-	private JComboBox geschlechtF = new JComboBox(geschlechtOptions);
+	private JTextField geschlechtF = new JTextField("");
 
 	//Field with date format
 	DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/uu");
@@ -49,8 +48,7 @@ public class DetailGUI {
 	private JTextField wohnortF = new JTextField("");
 	private JTextField infosF = new JTextField("");
 	private JTextField medikamenteF = new JTextField("");
-	private String[] statusOptions = {"waiting", "in treatment", "treated"};
-	private JComboBox statusF = new JComboBox(statusOptions);
+	private JTextField statusF = new JTextField("");
 	private JTextField arztF = new JTextField("");
 	private JTextField vorerkrankungenF = new JTextField("");
 
@@ -97,7 +95,7 @@ public class DetailGUI {
 		vornameF.setEditable(false);
 		formular.add(geschlecht);
 		formular.add(geschlechtF);
-		geschlechtF.setSelectedItem(patient.getGeschlecht());
+		geschlechtF.setText(patient.getGeschlecht());
 		geschlechtF.setEditable(false);
 		formular.add(dob);
 		formular.add(dateField);
@@ -108,7 +106,7 @@ public class DetailGUI {
 		alterF.setEditable(false);
 		formular.add(status);
 		formular.add(statusF);
-		statusF.setSelectedItem(patient.getStatus());
+		statusF.setText(patient.getStatus());
 		statusF.setEditable(false);
 		formular.add(groesse);
 		formular.add(groesseF);
