@@ -107,6 +107,7 @@ public class MainGUI {
 		tableRenderer = table.getDefaultRenderer(JButton.class);
 		table.setDefaultRenderer(JCheckBox.class, new JTableButtonRenderer(tableRenderer));
 		table.setDefaultRenderer(JButton.class, new JTableButtonRenderer(tableRenderer));
+		table.getTableHeader().setReorderingAllowed(false);
 
 		scrollP = new JScrollPane(table);
 		patientList.add(scrollP, BorderLayout.CENTER);
