@@ -24,9 +24,9 @@ public class LoginGUI {
 
     private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. Drake Ramoray", "Dr. Meredith Grey", "Dr. Painus Gregerus"};
     private JComboBox drF = new JComboBox(drOptions);
-    private JTextField passwordF = new JTextField("");
+    private JPasswordField passwordF = new JPasswordField();
 
-    private JButton back = new JButton("Login");
+    private JButton login = new JButton("Login");
 
     public LoginGUI(Controller controller) {
         this.controller = controller;
@@ -56,7 +56,7 @@ public class LoginGUI {
         formular.add(password);
         formular.add(passwordF);
 
-        buttonsPanel.add(back);
+        buttonsPanel.add(login);
 
 
         // Design
@@ -74,8 +74,12 @@ public class LoginGUI {
         buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0,40,20,40));
 
         //Button
-        back.addActionListener(e -> {
-            controller.setMainGUIVis();
+        login.addActionListener(e -> {
+            if (controller.checkPW(passwordF.getText())){
+                controller.setMainGUIVis();
+            }else {
+                passwordF.setBackground(new Color(255,105,97));
+            }
         });
 
     }

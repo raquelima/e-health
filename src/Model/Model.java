@@ -4,6 +4,7 @@ import Controller.Controller;
 import Data.PatientDt;
 import Data.PatientRowDt;
 
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
@@ -139,4 +140,12 @@ public class Model {
         return results;
     }
 
+    public boolean checkPW(String text){
+        boolean check = false;
+        if(text.equals("e-health")){
+            check = true;
+            System.out.println("true");
+        }
+        return check;
+    }
 }

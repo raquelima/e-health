@@ -126,4 +126,8 @@ public class Controller {
         setMainGUIVis(model.getResults(search));
     }
 
+    public boolean checkPW(String text){
+        return model.checkPW(text);
+    }
+
 }
