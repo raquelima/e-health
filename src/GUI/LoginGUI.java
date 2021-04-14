@@ -42,7 +42,7 @@ public class LoginGUI {
     private void addElements(){
         // Layout
         frame.setLayout(new BorderLayout());
-        formular.setLayout(new GridLayout(4,1));
+        formular.setLayout(new GridLayout(2,2, 20, 100));
         titlePanel.setLayout(new BorderLayout());
         buttonsPanel.setLayout(new GridLayout(1,1));
         frame.add(formular, BorderLayout.CENTER);
@@ -58,13 +58,14 @@ public class LoginGUI {
 
         // Design
         title.setFont(new Font("",Font.PLAIN,30));
+        username.setFont(new Font("",Font.PLAIN,18));
+        password.setFont(new Font("",Font.PLAIN,18));
+        drF.setFont(new Font("",Font.PLAIN,18));
+        passwordF.setFont(new Font("",Font.PLAIN,18));
 
 
         // Borders
-        username.setBorder(BorderFactory.createEmptyBorder(60, 20, 0, 0));
-        password.setBorder(BorderFactory.createEmptyBorder(30, 20, 0, 0));
-        drF.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
-        passwordF.setBorder(BorderFactory.createEmptyBorder(0, 20, 40, 0));
+        formular.setBorder(BorderFactory.createEmptyBorder(40, 130, 60, 80));
 
 
 
