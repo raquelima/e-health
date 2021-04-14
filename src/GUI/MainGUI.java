@@ -34,7 +34,9 @@ public class MainGUI {
 	ImageIcon personIcon = new ImageIcon("src/images/personIcon.png");
 	private JLabel patientListing = new JLabel("Patient Listing", personIcon, JLabel.LEFT);
 	ImageIcon heart = new ImageIcon("src/Images/heart.png");
-	private JLabel patientLabel = new JLabel("Patients", heart, JLabel.LEFT);
+	private JLabel patientLabel = new JLabel("E-Health", heart, JLabel.LEFT);
+	ImageIcon hospital = new ImageIcon("src/Images/hospital.png");
+	private JButton home = new JButton(hospital);
 
 	BufferedImage image;
 
@@ -85,7 +87,7 @@ public class MainGUI {
 		titlePanel.setLayout(new BorderLayout());
 		patientList.setLayout(new BorderLayout());
 		headerPanel.setLayout(new BorderLayout());
-		searchPanel.setLayout(new GridLayout(1,2,900,0));
+		searchPanel.setLayout(new GridLayout(1,3,350,0));
 		headerPanel.add(titlePanel, BorderLayout.SOUTH);
 		headerPanel.add(searchPanel, BorderLayout.NORTH);
 		frame.add(headerPanel, BorderLayout.NORTH);
@@ -94,6 +96,7 @@ public class MainGUI {
 		titlePanel.add(patientListing, BorderLayout.WEST);
 		titlePanel.add(newPatient, BorderLayout.EAST);
 		searchPanel.add(patientLabel);
+		searchPanel.add(home);
 		searchPanel.add(searchField);
 		searchField.addActionListener(new ActionListener() {
 			@Override
@@ -114,6 +117,9 @@ public class MainGUI {
 
 
 		// Design
+		home.setOpaque(false);
+		home.setContentAreaFilled(false);
+		home.setBorderPainted(false);
 		patientLabel.setFont(new Font("", Font.PLAIN, 30));
 		patientLabel.setForeground(new Color(68, 68, 68));
 		patientListing.setFont(new Font("", Font.PLAIN, 30));
