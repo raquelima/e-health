@@ -35,8 +35,8 @@ public class MainGUI {
 	private JLabel patientListing = new JLabel("Patient Listing", personIcon, JLabel.LEFT);
 	ImageIcon heart = new ImageIcon("src/Images/heart.png");
 	private JLabel patientLabel = new JLabel("E-Health", heart, JLabel.LEFT);
-	ImageIcon hospital = new ImageIcon("src/Images/hospital.png");
-	private JButton home = new JButton(hospital);
+	ImageIcon homeIcon = new ImageIcon("src/Images/home.png");
+	private JButton home = new JButton(homeIcon);
 
 	BufferedImage image;
 
@@ -138,7 +138,7 @@ public class MainGUI {
 
 		//Buttons
 		newPatient.addActionListener(e -> controller.setNewPatientGUIVis());
-
+		home.addActionListener(e -> controller.setMainGUIVis());
 	}
 
 	private void loadTableModel() {
