@@ -54,7 +54,7 @@ public class NewPatientGUI {
     private String[] statusOptions = {"waiting", "in treatment", "treated"};
     private JComboBox statusF = new JComboBox(statusOptions);
     private JTextField vorerkrankungenF = new JTextField("");
-    private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. drake ramoray", "Dr. Meredith Grey", "Dr Painus Gregerus"};
+    private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. Drake Ramoray", "Dr. Meredith Grey", "Dr. Painus Gregerus"};
     private JComboBox drF = new JComboBox(drOptions);
 
     private JButton cancel = new JButton("Cancel");

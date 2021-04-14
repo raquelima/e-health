@@ -18,158 +18,55 @@ public class LoginGUI {
 
     private Controller controller;
 
-    private JLabel newPatient = new JLabel("New Patient");
-    private JLabel patientID = new JLabel("Patient ID:");
-    private JLabel nachname = new JLabel("Nachname:", JLabel.LEFT);
-    private JLabel vorname = new JLabel("Vorname:");
-    private JLabel geschlecht = new JLabel("Geschlecht:");
-    private JLabel dob = new JLabel("DOB:");
-    private JLabel groesse = new JLabel("Grösse:");
-    private JLabel gewicht = new JLabel("Gewicht:");
-    private JLabel wohnort = new JLabel("Wohnort:");
-    private JLabel infos = new JLabel("Infos:");
-    private JLabel medikamente = new JLabel("Medikamente:");
-    private JLabel status = new JLabel("Status:");
-    private JLabel arzt = new JLabel("Arzt:");
-    private JLabel vorerkrankungen = new JLabel("Vorerkrankungen:");
+    private JLabel title = new JLabel("Login");
+    private JLabel username = new JLabel("Username");
+    private JLabel password = new JLabel("Password:");
 
-    private JTextField patientIdF = new JTextField("");
-    private JTextField nachnameF = new JTextField("");
-    private JTextField vornameF = new JTextField("");
-    private String[] geschlechtOptions = {"weiblich", "männlich", "anderes"};
-    private JComboBox geschlechtF = new JComboBox(geschlechtOptions);
-
-    //Field with date format
-    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/uu");
-    DateField dateField = new DateField(dateFormatter);
-
-    private JTextField groesseF = new JTextField("");
-    private JTextField gewichtF = new JTextField("");
-    private JTextField wohnortF = new JTextField("");
-    private JTextField infosF = new JTextField("");
-    private JTextField medikamenteF = new JTextField("");
-    private String[] statusOptions = {"waiting", "in treatment", "treated"};
-    private JComboBox statusF = new JComboBox(statusOptions);
-    private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. drake ramoray", "Dr. Meredith Grey", "Dr Painus Gregerus"};
+    private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. Drake Ramoray", "Dr. Meredith Grey", "Dr. Painus Gregerus"};
     private JComboBox drF = new JComboBox(drOptions);
-    private JTextField vorerkrankungenF = new JTextField("");
+    private JTextField passwordF = new JTextField("");
 
-    private JButton back = new JButton("Back to list");
-    private JButton save = new JButton("Save");
+    private JButton back = new JButton("Login");
 
-    public LoginGUI(Controller controller, int index) {
+    public LoginGUI(Controller controller) {
         this.controller = controller;
 
-        addElements(index);
+        addElements();
 
         //Window Settings
-        frame.setTitle("Edit Patient");
-        frame.setSize(870, 856);
+        frame.setTitle("Login");
+        frame.setSize(593, 383);
         frame.setVisible(true);
     }
 
-    private void addElements(int index){
+    private void addElements(){
         // Layout
         frame.setLayout(new BorderLayout());
-        formular.setLayout(new GridLayout(13,2,5,10));
+        formular.setLayout(new GridLayout(2,2,10,100));
         titlePanel.setLayout(new BorderLayout());
-        buttonsPanel.setLayout(new GridLayout(1,2));
+        buttonsPanel.setLayout(new GridLayout(1,1));
         frame.add(formular, BorderLayout.CENTER);
         frame.add(titlePanel, BorderLayout.NORTH);
         frame.add(buttonsPanel, BorderLayout.SOUTH);
 
-        // Elements
-        PatientDt patient = controller.getPatientDetails(index);
-        PatientRowDt row = controller.getRowDetails(index);
 
-        titlePanel.add(newPatient);
-        newPatient.setText(patient.getVorname() + " " + patient.getNachname());
-        formular.add(patientID);
-        formular.add(patientIdF);
-        patientIdF.setText(patient.getPatientID());
-        patientIdF.setEditable(false);
-        formular.add(nachname);
-        formular.add(nachnameF);
-        nachnameF.setText(patient.getNachname());
-        formular.add(vorname);
-        formular.add(vornameF);
-        vornameF.setText(patient.getVorname());
-        formular.add(geschlecht);
-        formular.add(geschlechtF);
-        geschlechtF.setSelectedItem(patient.getGeschlecht());
-        formular.add(dob);
-        formular.add(dateField);
-        dateField.setText(patient.getDob());
-        formular.add(status);
-        formular.add(statusF);
-        statusF.setSelectedItem(patient.getStatus());
-        formular.add(groesse);
-        formular.add(groesseF);
-        groesseF.setText(String.valueOf(patient.getGroesse()));
-        formular.add(gewicht);
-        formular.add(gewichtF);
-        gewichtF.setText(String.valueOf(patient.getGewicht()));
-        formular.add(wohnort);
-        formular.add(wohnortF);
-        wohnortF.setText(patient.getWohnort());
-        formular.add(infos);
-        formular.add(infosF);
-        infosF.setText(patient.getInfos());
-        formular.add(medikamente);
-        formular.add(medikamenteF);
-        medikamenteF.setText(patient.getMedikamente());
-        formular.add(arzt);
+        titlePanel.add(title);
+        formular.add(username);
         formular.add(drF);
-        drF.setSelectedItem(patient.getArzt());
-        formular.add(vorerkrankungen);
-        formular.add(vorerkrankungenF);
-        vorerkrankungenF.setText(patient.getVorerkrankungen());
+        formular.add(password);
+        formular.add(passwordF);
 
         buttonsPanel.add(back);
-        buttonsPanel.add(save);
+
 
         // Design
-        newPatient.setFont(new Font("",Font.PLAIN,30));
-        patientID.setBackground(new Color(189,191,242));
-        patientID.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        patientID.setOpaque(true);
-        nachname.setBackground(new Color(189,191,242));
-        nachname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        nachname.setOpaque(true);
-        vorname.setBackground(new Color(189,191,242));
-        vorname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        vorname.setOpaque(true);
-        geschlecht.setBackground(new Color(189,191,242));
-        geschlecht.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        geschlecht.setOpaque(true);
-        dob.setBackground(new Color(189,191,242));
-        dob.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        dob.setOpaque(true);
-        status.setBackground(new Color(189,191,242));
-        status.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        status.setOpaque(true);
-        groesse.setBackground(new Color(189,191,242));
-        groesse.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        groesse.setOpaque(true);
-        gewicht.setBackground(new Color(189,191,242));
-        gewicht.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        gewicht.setOpaque(true);
-        wohnort.setBackground(new Color(189,191,242));
-        wohnort.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        wohnort.setOpaque(true);
-        infos.setBackground(new Color(189,191,242));
-        infos.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        infos.setOpaque(true);
-        medikamente.setBackground(new Color(189,191,242));
-        medikamente.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        medikamente.setOpaque(true);
-        arzt.setBackground(new Color(189,191,242));
-        arzt.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        arzt.setOpaque(true);
-        vorerkrankungen.setBackground(new Color(189,191,242));
-        vorerkrankungen.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        vorerkrankungen.setOpaque(true);
-
+        title.setFont(new Font("",Font.PLAIN,30));
+        username.setBackground(new Color(189,191,242));
+        username.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        username.setOpaque(true);
+        password.setBackground(new Color(189,191,242));
+        password.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+        password.setOpaque(true);
 
         // Borders
         formular.setBorder(BorderFactory.createEmptyBorder(10,40,15,40));
@@ -178,33 +75,9 @@ public class LoginGUI {
 
         //Button
         back.addActionListener(e -> {
-            this.frame.dispose();
             controller.setMainGUIVis();
         });
-        save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                patient.setNachname(nachnameF.getText());
-                row.setNachname(nachnameF.getText());
-                patient.setVorname(vornameF.getText());
-                row.setVorname(vornameF.getText());
-                patient.setGeschlecht((String) geschlechtF.getSelectedItem());
-                row.setGeschlecht((String) geschlechtF.getSelectedItem());
-                patient.setDob(dateField.getText());
-                row.setDob(dateField.getText());
-                patient.setStatus((String) statusF.getSelectedItem());
-                patient.setGroesse(Double.parseDouble(groesseF.getText()));
-                patient.setGewicht(Double.parseDouble(gewichtF.getText()));
-                patient.setWohnort(wohnortF.getText());
-                patient.setInfos(infosF.getText());
-                patient.setMedikamente(medikamenteF.getText());
-                patient.setArzt((String)drF.getSelectedItem());
-                patient.setVorerkrankungen(vorerkrankungenF.getText());
-
-                controller.setMainGUIVis();
-            }
-        });
     }
 
     public void DisposeView() {

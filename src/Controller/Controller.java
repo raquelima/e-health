@@ -18,13 +18,12 @@ public class Controller {
     private NewPatientGUI newPatientGUI;
     private EditGUI editGUI;
     private IdGenerator idGenerator;
-
-
+    private LoginGUI loginGUI;
 
     public Controller() {
         this.model = new Model(this);
         this.idGenerator = new IdGenerator();
-        setMainGUIVis();
+        setLoginGUIVis();
     }
 
     public AbstractTableModel getModel() {
@@ -59,6 +58,11 @@ public class Controller {
         editGUI = new EditGUI(this, index);
     }
 
+    public void setLoginGUIVis() {
+        cleanView();
+        loginGUI = new LoginGUI(this);
+    }
+
     public void deletePatient(int length){
         model.deletePatient(length);
     }
@@ -85,6 +89,9 @@ public class Controller {
         }
         if (mainGUI != null) {
             mainGUI.DisposeView();
+        }
+        if (loginGUI != null) {
+            loginGUI.DisposeView();
         }
 
     }
