@@ -13,12 +13,12 @@ import java.time.format.DateTimeFormatter;
 public class LoginGUI {
     private JFrame frame = new JFrame();
     private JPanel formular = new JPanel();
-    private JPanel titlePanel = new JPanel();
     private JPanel buttonsPanel = new JPanel();
+    private JPanel titlePanel = new JPanel();
 
     private Controller controller;
 
-    private JLabel title = new JLabel("Login");
+    private JLabel title = new JLabel("Login", JLabel.CENTER);
     private JLabel username = new JLabel("Username");
     private JLabel password = new JLabel("Password:");
 
@@ -42,36 +42,31 @@ public class LoginGUI {
     private void addElements(){
         // Layout
         frame.setLayout(new BorderLayout());
-        formular.setLayout(new GridLayout(2,2,10,100));
+        formular.setLayout(new GridLayout(4,1));
         titlePanel.setLayout(new BorderLayout());
         buttonsPanel.setLayout(new GridLayout(1,1));
         frame.add(formular, BorderLayout.CENTER);
-        frame.add(titlePanel, BorderLayout.NORTH);
         frame.add(buttonsPanel, BorderLayout.SOUTH);
-
+        frame.add(titlePanel,BorderLayout.NORTH);
 
         titlePanel.add(title);
         formular.add(username);
         formular.add(drF);
         formular.add(password);
         formular.add(passwordF);
-
         buttonsPanel.add(login);
-
 
         // Design
         title.setFont(new Font("",Font.PLAIN,30));
-        username.setBackground(new Color(189,191,242));
-        username.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        username.setOpaque(true);
-        password.setBackground(new Color(189,191,242));
-        password.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        password.setOpaque(true);
+
 
         // Borders
-        formular.setBorder(BorderFactory.createEmptyBorder(10,40,15,40));
-        titlePanel.setBorder(BorderFactory.createEmptyBorder(20,40,10,40));
-        buttonsPanel.setBorder(BorderFactory.createEmptyBorder(0,40,20,40));
+        username.setBorder(BorderFactory.createEmptyBorder(60, 20, 0, 0));
+        password.setBorder(BorderFactory.createEmptyBorder(30, 20, 0, 0));
+        drF.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
+        passwordF.setBorder(BorderFactory.createEmptyBorder(0, 20, 40, 0));
+
+
 
         //Button
         login.addActionListener(e -> {

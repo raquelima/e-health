@@ -144,7 +144,6 @@ public class Model {
         boolean check = false;
         if(text.equals("e-health")){
             check = true;
-            System.out.println("true");
         }
         return check;
     }
