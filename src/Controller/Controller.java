@@ -58,9 +58,7 @@ public class Controller {
         model.deletePatient(length);
     }
 
-    public void deleteAllPatients(){
-        model.deleteAllPatients();
-    }
+
 
     public ArrayList<PatientRowDt> getAllRows(){
         return model.getAllRows();

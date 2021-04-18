@@ -48,11 +48,6 @@ public class Model {
         }
     }
 
-    public void deleteAllPatients(){
-        rows.clear();
-        patients.clear();
-    }
-
     public ArrayList<PatientRowDt> getAllRows(){
         return rows;
     }

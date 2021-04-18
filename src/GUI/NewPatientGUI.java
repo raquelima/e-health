@@ -46,9 +46,9 @@ public class NewPatientGUI extends GUI{
     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/uu");
     DateField dateField = new DateField(dateFormatter);
 
-    private NumberFormat amountFormat = new DecimalFormat();
-    private JFormattedTextField groesseF = new JFormattedTextField(amountFormat);
-    private JFormattedTextField gewichtF = new JFormattedTextField(amountFormat);
+    private NumberFormat format = new DecimalFormat();
+    private JFormattedTextField groesseF = new JFormattedTextField(format);
+    private JFormattedTextField gewichtF = new JFormattedTextField(format);
     private JTextField wohnortF = new JTextField("");
     private JTextField infosF = new JTextField("");
     private JTextField medikamenteF = new JTextField("");
