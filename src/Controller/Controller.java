@@ -1,14 +1,13 @@
 
 package Controller;
 
-import Data.IdGenerator;
 import Data.PatientRowDt;
 import Data.PatientDt;
 import GUI.*;
 
+import Logic.Logic;
 import Model.Model;
 
-import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class Controller {
@@ -17,21 +16,13 @@ public class Controller {
     private DetailGUI detailGUI;
     private NewPatientGUI newPatientGUI;
     private EditGUI editGUI;
-    private IdGenerator idGenerator;
     private LoginGUI loginGUI;
+    private Logic logic;
 
     public Controller() {
         this.model = new Model(this);
-        this.idGenerator = new IdGenerator();
+        this.logic = new Logic();
         setLoginGUIVis();
-    }
-
-    public AbstractTableModel getModel() {
-        return model.getModel();
-    }
-
-    public AbstractTableModel getModel(ArrayList<PatientRowDt> results) {
-        return model.getModel(results);
     }
 
     public void setMainGUIVis() {
@@ -109,16 +100,16 @@ public class Controller {
     }
 
     public String getID() {
-        return idGenerator.getID();
+        return logic.getID();
     }
 
     public String getID(int id){
-        String idText = idGenerator.getID(id);
+        String idText = logic.getID(id);
         return idText;
     }
 
     public void setNewId() {
-        idGenerator.setNewId();
+        logic.setNewId();
     }
 
     public void search(String search){
@@ -127,7 +118,15 @@ public class Controller {
     }
 
     public boolean checkPW(String text){
-        return model.checkPW(text);
+        return logic.checkPW(text);
+    }
+
+    public ArrayList<PatientRowDt> getRows() {
+        return model.getRows();
+    }
+
+    public ArrayList<PatientRowDt> getResults() {
+        return model.getResults();
     }
 
 }

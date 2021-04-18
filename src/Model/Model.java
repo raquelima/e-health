@@ -4,8 +4,6 @@ import Controller.Controller;
 import Data.PatientDt;
 import Data.PatientRowDt;
 
-import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class Model {
@@ -14,7 +12,7 @@ public class Model {
 
     private ArrayList<PatientRowDt> rows = new ArrayList<>();
     private ArrayList<PatientRowDt> results;
-    ;
+
 
     private Controller controller;
 
@@ -67,66 +65,12 @@ public class Model {
         return rows.get(index);
     }
 
-    public AbstractTableModel getModel() {
-
-        String[] reihen = new String[]{"Patient ID", "Nachname", "Vorname", "Geschlecht", "DOB", "Details", "Edit", "Delete"};
-
-        return new AbstractTableModel() {
-            @Override
-            public int getRowCount() {
-                return rows.size();
-            }
-
-            @Override
-            public int getColumnCount() {
-                return reihen.length;
-            }
-
-            @Override
-            public Object getValueAt(int rowIndex, int columnIndex) {
-                return rows.get(rowIndex).getAsArray()[columnIndex];
-            }
-
-            public String getColumnName(int column) {
-                return reihen[column];
-            }
-            public Class getColumnClass(int column) {
-                return getValueAt(0, column).getClass();
-            }
-
-
-        };
+    public ArrayList<PatientRowDt> getRows() {
+        return rows;
     }
 
-    public AbstractTableModel getModel(ArrayList<PatientRowDt> result) {
-
-        String[] reihen = new String[]{"Patient ID", "Nachname", "Vorname", "Geschlecht", "DOB", "Details", "Edit", "Delete"};
-
-        return new AbstractTableModel() {
-            @Override
-            public int getRowCount() {
-                return result.size();
-            }
-
-            @Override
-            public int getColumnCount() {
-                return reihen.length;
-            }
-
-            @Override
-            public Object getValueAt(int rowIndex, int columnIndex) {
-                return result.get(rowIndex).getAsArray()[columnIndex];
-            }
-
-            public String getColumnName(int column) {
-                return reihen[column];
-            }
-            public Class getColumnClass(int column) {
-                return getValueAt(0, column).getClass();
-            }
-
-
-        };
+    public ArrayList<PatientRowDt> getResults() {
+        return results;
     }
 
     public ArrayList<PatientRowDt> getResults(String search){
@@ -140,11 +84,5 @@ public class Model {
         return results;
     }
 
-    public boolean checkPW(String text){
-        boolean check = false;
-        if(text.equals("e-health")){
-            check = true;
-        }
-        return check;
-    }
+
 }

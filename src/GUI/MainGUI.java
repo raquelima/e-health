@@ -142,7 +142,7 @@ public class MainGUI {
 	}
 
 	private void loadTableModel() {
-		AbstractTableModel model = controller.getModel();
+		AbstractTableModel model = getModel(controller.getRows());
 		table.setModel(model);
 
 		table.addMouseListener(new MouseAdapter() {
@@ -191,7 +191,7 @@ public class MainGUI {
 	}
 
 	private void loadTableModel(ArrayList<PatientRowDt> showResult) {
-		AbstractTableModel model = controller.getModel(showResult);
+		AbstractTableModel model = getModel(showResult);
 		table.setModel(model);
 
 		table.addMouseListener(new MouseAdapter() {
@@ -243,7 +243,41 @@ public class MainGUI {
 	public void DisposeView() {
 		this.frame.dispose();
 	}
+
+	public AbstractTableModel getModel(ArrayList<PatientRowDt> result) {
+
+		String[] reihen = new String[]{"Patient ID", "Nachname", "Vorname", "Geschlecht", "DOB", "Details", "Edit", "Delete"};
+
+		return new AbstractTableModel() {
+			@Override
+			public int getRowCount() {
+				return result.size();
+			}
+
+			@Override
+			public int getColumnCount() {
+				return reihen.length;
+			}
+
+			@Override
+			public Object getValueAt(int rowIndex, int columnIndex) {
+				return result.get(rowIndex).getAsArray()[columnIndex];
+			}
+
+			public String getColumnName(int column) {
+				return reihen[column];
+			}
+			public Class getColumnClass(int column) {
+				return getValueAt(0, column).getClass();
+			}
+
+
+		};
+	}
 }
+
+
+
 
 class JTableButtonRenderer implements TableCellRenderer {
 	private TableCellRenderer defaultRenderer;
