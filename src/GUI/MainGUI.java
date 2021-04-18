@@ -17,9 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MainGUI {
+public class MainGUI extends GUI{
 
-	private JFrame frame = new JFrame();
 	private JPanel titlePanel = new JPanel();
 	private JPanel searchPanel = new JPanel();
 	private JPanel headerPanel = new JPanel();
@@ -59,39 +58,35 @@ public class MainGUI {
 	private JButton newPatient = new JButton("   + New Patient   ");
 
 	public MainGUI(Controller controller) {
+		super("Patient Listing", 1349, 867);
 		this.controller = controller;
 
 		addElements();
 		loadTableModel();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Patient Listing");
-		frame.setSize(1349, 867);
-		frame.setVisible(true);
+		setVisible(true);
 	}
 	public MainGUI(Controller controller,  ArrayList<PatientRowDt> results) {
+		super("Patient Listing", 1349, 867);
 		this.controller = controller;
 
 		addElements();
 		loadTableModel(results);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Patient Listing");
-		frame.setSize(1349, 867);
-		frame.setVisible(true);
+		setVisible(true);
 	}
 
 	private void addElements() {
 		searchField.setMargin(new Insets(0, image.getWidth(), 0, 0));
 
 		//Layout
-		frame.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		titlePanel.setLayout(new BorderLayout());
 		patientList.setLayout(new BorderLayout());
 		headerPanel.setLayout(new BorderLayout());
 		searchPanel.setLayout(new GridLayout(1,3,350,0));
 		headerPanel.add(titlePanel, BorderLayout.SOUTH);
 		headerPanel.add(searchPanel, BorderLayout.NORTH);
-		frame.add(headerPanel, BorderLayout.NORTH);
-		frame.add(patientList, BorderLayout.CENTER);
+		add(headerPanel, BorderLayout.NORTH);
+		add(patientList, BorderLayout.CENTER);
 
 		titlePanel.add(patientListing, BorderLayout.WEST);
 		titlePanel.add(newPatient, BorderLayout.EAST);
@@ -241,7 +236,7 @@ public class MainGUI {
 	}
 
 	public void DisposeView() {
-		this.frame.dispose();
+		this.dispose();
 	}
 
 	public AbstractTableModel getModel(ArrayList<PatientRowDt> result) {

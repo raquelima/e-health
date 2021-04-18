@@ -3,8 +3,6 @@ package GUI;
 import Controller.Controller;
 import Data.PatientDt;
 import Data.PatientRowDt;
-import Data.PatientRowDt;
-import Data.PatientDt;
 
 import javax.swing.*;
 
@@ -12,13 +10,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.text.ChoiceFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-public class NewPatientGUI {
+public class NewPatientGUI extends GUI{
 
-    private JFrame frame = new JFrame();
     private JPanel formular = new JPanel();
     private JPanel titlePanel = new JPanel();
     private JPanel buttonsPanel = new JPanel();
@@ -46,8 +46,9 @@ public class NewPatientGUI {
     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/uu");
     DateField dateField = new DateField(dateFormatter);
 
-    private JTextField groesseF = new JTextField("");
-    private JTextField gewichtF = new JTextField("");
+    private NumberFormat amountFormat = new DecimalFormat();
+    private JFormattedTextField groesseF = new JFormattedTextField(amountFormat);
+    private JFormattedTextField gewichtF = new JFormattedTextField(amountFormat);
     private JTextField wohnortF = new JTextField("");
     private JTextField infosF = new JTextField("");
     private JTextField medikamenteF = new JTextField("");
@@ -61,15 +62,15 @@ public class NewPatientGUI {
     private JButton add = new JButton("Add");
 
     public NewPatientGUI(Controller controller) {
-
+        super("Add New Patient", 870, 856);
         // Layout
-        frame.setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
         formular.setLayout(new GridLayout(12,2,5,10));
         titlePanel.setLayout(new BorderLayout());
         buttonsPanel.setLayout(new GridLayout(1,2));
-        frame.add(formular, BorderLayout.CENTER);
-        frame.add(titlePanel, BorderLayout.NORTH);
-        frame.add(buttonsPanel, BorderLayout.SOUTH);
+        add(formular, BorderLayout.CENTER);
+        add(titlePanel, BorderLayout.NORTH);
+        add(buttonsPanel, BorderLayout.SOUTH);
 
         // Elements
         titlePanel.add(newPatient);
@@ -141,7 +142,6 @@ public class NewPatientGUI {
         vorerkrankungen.setBorder(BorderFactory.createLineBorder(Color.BLUE));
         vorerkrankungen.setOpaque(true);
 
-
         // Borders
         formular.setBorder(BorderFactory.createEmptyBorder(10,40,15,40));
         titlePanel.setBorder(BorderFactory.createEmptyBorder(20,40,10,40));
@@ -149,7 +149,7 @@ public class NewPatientGUI {
 
         //ActionListeners
         cancel.addActionListener(e -> {
-            this.frame.dispose();
+            this.dispose();
             controller.setMainGUIVis();
         });
         add.addActionListener(new ActionListener() {
@@ -179,13 +179,11 @@ public class NewPatientGUI {
         });
 
         //Window Settings
-        frame.setTitle("Add New Patient");
-        frame.setSize(870, 856);
-        frame.setVisible(true);
+        setVisible(true);
     }
 
     public void DisposeView() {
-        this.frame.dispose();
+        this.dispose();
     }
 
 }

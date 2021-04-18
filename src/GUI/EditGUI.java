@@ -8,10 +8,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
 
-public class EditGUI {
-    private JFrame frame = new JFrame();
+public class EditGUI extends GUI{
     private JPanel formular = new JPanel();
     private JPanel titlePanel = new JPanel();
     private JPanel buttonsPanel = new JPanel();
@@ -43,8 +44,9 @@ public class EditGUI {
     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/uu");
     DateField dateField = new DateField(dateFormatter);
 
-    private JTextField groesseF = new JTextField("");
-    private JTextField gewichtF = new JTextField("");
+    private NumberFormat amountFormat = new DecimalFormat();
+    private JFormattedTextField groesseF = new JFormattedTextField(amountFormat);
+    private JFormattedTextField gewichtF = new JFormattedTextField(amountFormat);
     private JTextField wohnortF = new JTextField("");
     private JTextField infosF = new JTextField("");
     private JTextField medikamenteF = new JTextField("");
@@ -58,25 +60,24 @@ public class EditGUI {
     private JButton save = new JButton("Save");
 
     public EditGUI(Controller controller, int index) {
+        super("Edit Patient", 870, 856);
         this.controller = controller;
 
         addElements(index);
 
         //Window Settings
-        frame.setTitle("Edit Patient");
-        frame.setSize(870, 856);
-        frame.setVisible(true);
+        setVisible(true);
     }
 
     private void addElements(int index){
         // Layout
-        frame.setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
         formular.setLayout(new GridLayout(13,2,5,10));
         titlePanel.setLayout(new BorderLayout());
         buttonsPanel.setLayout(new GridLayout(1,2));
-        frame.add(formular, BorderLayout.CENTER);
-        frame.add(titlePanel, BorderLayout.NORTH);
-        frame.add(buttonsPanel, BorderLayout.SOUTH);
+        add(formular, BorderLayout.CENTER);
+        add(titlePanel, BorderLayout.NORTH);
+        add(buttonsPanel, BorderLayout.SOUTH);
 
         // Elements
         PatientDt patient = controller.getPatientDetails(index);
@@ -178,7 +179,7 @@ public class EditGUI {
 
         //Button
         back.addActionListener(e -> {
-            this.frame.dispose();
+            this.dispose();
             controller.setMainGUIVis();
         });
         save.addActionListener(new ActionListener() {
@@ -208,7 +209,7 @@ public class EditGUI {
     }
 
     public void DisposeView() {
-        this.frame.dispose();
+        this.dispose();
     }
 
 

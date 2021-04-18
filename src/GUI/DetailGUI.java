@@ -5,12 +5,9 @@ import Data.PatientDt;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.format.DateTimeFormatter;
 
-public class DetailGUI {
-	private JFrame frame = new JFrame();
+public class DetailGUI extends GUI{
 	private JPanel formular = new JPanel();
 	private JPanel titlePanel = new JPanel();
 	private JPanel buttonsPanel = new JPanel();
@@ -56,25 +53,24 @@ public class DetailGUI {
 	private JButton edit = new JButton("Edit");
 
 	public DetailGUI(Controller controller, int index) {
+		super("Patient Details", 870, 856);
 		this.controller = controller;
 
 		addElements(index);
 
 		//Window Settings
-		frame.setTitle("Patient Details");
-		frame.setSize(870, 856);
-		frame.setVisible(true);
+		setVisible(true);
 	}
 
 	private void addElements(int index){
 		// Layout
-		frame.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		formular.setLayout(new GridLayout(14,2,5,10));
 		titlePanel.setLayout(new BorderLayout());
 		buttonsPanel.setLayout(new GridLayout(1,2));
-		frame.add(formular, BorderLayout.CENTER);
-		frame.add(titlePanel, BorderLayout.NORTH);
-		frame.add(buttonsPanel, BorderLayout.SOUTH);
+		add(formular, BorderLayout.CENTER);
+		add(titlePanel, BorderLayout.NORTH);
+		add(buttonsPanel, BorderLayout.SOUTH);
 
 		// Elements
 		PatientDt patient = controller.getPatientDetails(index);
@@ -193,14 +189,14 @@ public class DetailGUI {
 
 		//Button
 		back.addActionListener(e -> {
-			this.frame.dispose();
+			this.dispose();
 			controller.setMainGUIVis();
 		});
 		edit.addActionListener(e -> controller.setEditGUIVis(index));
 	}
 
 	public void DisposeView() {
-		this.frame.dispose();
+		this.dispose();
 	}
 
 

@@ -1,17 +1,11 @@
 package GUI;
 
 import Controller.Controller;
-import Data.PatientDt;
-import Data.PatientRowDt;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.format.DateTimeFormatter;
 
-public class LoginGUI {
-    private JFrame frame = new JFrame();
+public class LoginGUI extends GUI{
     private JPanel formular = new JPanel();
     private JPanel buttonsPanel = new JPanel();
     private JPanel titlePanel = new JPanel();
@@ -29,25 +23,24 @@ public class LoginGUI {
     private JButton login = new JButton("Login");
 
     public LoginGUI(Controller controller) {
+        super("Login", 593, 383);
         this.controller = controller;
 
         addElements();
 
         //Window Settings
-        frame.setTitle("Login");
-        frame.setSize(593, 383);
-        frame.setVisible(true);
+        setVisible(true);
     }
 
     private void addElements(){
         // Layout
-        frame.setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
         formular.setLayout(new GridLayout(2,2, 20, 100));
         titlePanel.setLayout(new BorderLayout());
         buttonsPanel.setLayout(new GridLayout(1,1));
-        frame.add(formular, BorderLayout.CENTER);
-        frame.add(buttonsPanel, BorderLayout.SOUTH);
-        frame.add(titlePanel,BorderLayout.NORTH);
+        add(formular, BorderLayout.CENTER);
+        add(buttonsPanel, BorderLayout.SOUTH);
+        add(titlePanel,BorderLayout.NORTH);
 
         titlePanel.add(title);
         formular.add(username);
@@ -81,7 +74,7 @@ public class LoginGUI {
     }
 
     public void DisposeView() {
-        this.frame.dispose();
+        this.dispose();
     }
 
 

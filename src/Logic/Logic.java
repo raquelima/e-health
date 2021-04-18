@@ -4,7 +4,6 @@ public class Logic {
 
     private int identtity = 1;
 
-
     public Logic() {
     }
 
