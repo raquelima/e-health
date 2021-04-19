@@ -2,7 +2,7 @@ package Logic;
 
 public class Logic {
 
-    private int identtity = 1;
+    private int identity = 1;
 
     public Logic() {
     }
@@ -15,8 +15,8 @@ public class Logic {
         return check;
     }
     public String getID(){
-        String id = String.format("%03d",identtity);
-        identtity++;
+        String id = String.format("%03d",identity);
+        identity++;
         return id;
     }
     public String getID(int presentID){
@@ -25,6 +25,6 @@ public class Logic {
     }
 
     public void setNewId() {
-        identtity = identtity -1;
+        identity = identity -1;
     }
 }
