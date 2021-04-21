@@ -39,7 +39,7 @@ public class LoginGUI extends GUI{
         password.setBounds(123,195,100,30);
         passwordF.setBounds(276,195,170,30);
         title.setBounds(200,25,200,30);
-        login.setBounds(160,285,200,30);
+        login.setBounds(160,280,200,30);
     }
 
     private void addElements(){
