@@ -6,61 +6,62 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LoginGUI extends GUI{
+    /*
     private JPanel formular = new JPanel();
     private JPanel buttonsPanel = new JPanel();
+    private JPanel centerPanel = new JPanel();
     private JPanel titlePanel = new JPanel();
+    */
 
     private Controller controller;
 
     private JLabel title = new JLabel("Login", JLabel.CENTER);
-    private JLabel username = new JLabel("Username");
+    private JLabel username = new JLabel("Username:");
     private JLabel password = new JLabel("Password:");
 
     private String[] drOptions = {"Dr. Raquel Lima", "Dr. Elias Mattern", "Dr. Gabriel Nadolny", "Dr. Drake Ramoray", "Dr. Meredith Grey", "Dr. Painus Gregerus"};
     private JComboBox drF = new JComboBox(drOptions);
     private JPasswordField passwordF = new JPasswordField();
+    private JTextField invisible2 = new JTextField();
 
     private JButton login = new JButton("Login");
 
     public LoginGUI(Controller controller) {
-        super("Login", 593, 383);
+        super("Login", 536, 383);
         this.controller = controller;
-
+        
+        setPositions();
         addElements();
 
         //Window Settings
         setVisible(true);
     }
 
+    private void setPositions(){
+        username.setBounds(123,115,100,30);
+        drF.setBounds(276,115,170,30);
+        password.setBounds(123,195,100,30);
+        passwordF.setBounds(276,195,170,30);
+        title.setBounds(160,25,200,30);
+        login.setBounds(160,285,200,30);
+    }
+
     private void addElements(){
         // Layout
-        setLayout(new BorderLayout());
-        formular.setLayout(new GridLayout(2,2, 20, 100));
-        titlePanel.setLayout(new BorderLayout());
-        buttonsPanel.setLayout(new GridLayout(1,1));
-        add(formular, BorderLayout.CENTER);
-        add(buttonsPanel, BorderLayout.SOUTH);
-        add(titlePanel,BorderLayout.NORTH);
+        setLayout(null);
 
-        titlePanel.add(title);
-        formular.add(username);
-        formular.add(drF);
-        formular.add(password);
-        formular.add(passwordF);
-        buttonsPanel.add(login);
+        add(username);
+        add(drF);
+        add(password);
+        add(passwordF);
+        add(title);
+        add(login);
 
         // Design
-        title.setFont(new Font("",Font.PLAIN,30));
-        username.setFont(new Font("",Font.PLAIN,18));
-        password.setFont(new Font("",Font.PLAIN,18));
-        drF.setFont(new Font("",Font.PLAIN,18));
-        passwordF.setFont(new Font("",Font.PLAIN,18));
-
-
-        // Borders
-        formular.setBorder(BorderFactory.createEmptyBorder(40, 130, 60, 80));
-
-
+        title.setFont(new Font("",Font.PLAIN,25));
+        username.setFont(new Font("",Font.PLAIN,15));
+        password.setFont(new Font("",Font.PLAIN,15));
+        login.setFont(new Font("",Font.PLAIN,15));
 
         //Button
         login.addActionListener(e -> {
