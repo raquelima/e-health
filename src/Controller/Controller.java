@@ -60,11 +60,6 @@ public class Controller {
 
 
 
-    public ArrayList<PatientRowDt> getAllRows(){
-        return model.getAllRows();
-    }
-
-
     private void cleanView() {
 
         if (detailGUI != null) {
@@ -123,8 +118,5 @@ public class Controller {
         return model.getRows();
     }
 
-    public ArrayList<PatientRowDt> getResults() {
-        return model.getResults();
-    }
 
 }

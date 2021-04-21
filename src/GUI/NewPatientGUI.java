@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.text.ChoiceFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -194,7 +193,6 @@ class DateField extends JFormattedTextField {
 
     public DateField(DateTimeFormatter dateFormatter) {
         super(dateFormatter.toFormat(LocalDate::from));
-        setPreferredSize(new Dimension(100, 26));
     }
 
     @Override

@@ -32,7 +32,7 @@ public class Model {
         patients.remove(length);
         for (PatientDt d: patients) {
             int id = Integer.parseInt(d.getPatientID());
-            if (id > length){
+            if (id > length) {
                 id--;
                 d.setPatientID(controller.getID(id));
             }
@@ -48,9 +48,6 @@ public class Model {
         }
     }
 
-    public ArrayList<PatientRowDt> getAllRows(){
-        return rows;
-    }
 
     public PatientDt getPatientDetails(int index){
         return patients.get(index);
@@ -64,9 +61,6 @@ public class Model {
         return rows;
     }
 
-    public ArrayList<PatientRowDt> getResults() {
-        return results;
-    }
 
     public ArrayList<PatientRowDt> getResults(String search){
         results = new ArrayList<>();

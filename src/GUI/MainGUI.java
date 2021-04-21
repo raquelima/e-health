@@ -23,7 +23,6 @@ public class MainGUI extends GUI{
 	private JPanel searchPanel = new JPanel();
 	private JPanel headerPanel = new JPanel();
 	private JPanel patientList = new JPanel();
-	private JPanel buttonsPanel = new JPanel();
 
 	private Controller controller;
 

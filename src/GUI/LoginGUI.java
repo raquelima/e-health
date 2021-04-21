@@ -6,12 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LoginGUI extends GUI{
-    /*
-    private JPanel formular = new JPanel();
-    private JPanel buttonsPanel = new JPanel();
-    private JPanel centerPanel = new JPanel();
-    private JPanel titlePanel = new JPanel();
-    */
 
     private Controller controller;
 

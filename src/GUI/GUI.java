@@ -7,7 +7,6 @@ public class GUI extends JFrame {
         super(title);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         setSize(width,height);
         setResizable(false);
         setVisible(false);
