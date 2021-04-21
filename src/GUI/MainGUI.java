@@ -118,12 +118,12 @@ public class MainGUI extends GUI{
 		patientLabel.setForeground(new Color(68, 68, 68));
 		patientListing.setFont(new Font("", Font.PLAIN, 30));
 		patientListing.setForeground(new Color(68, 68, 68));
-		newPatient.setBackground(new Color(170, 170, 170));
-		newPatient.setBorder(BorderFactory.createLineBorder(new Color(68, 68, 68)));
+		newPatient.setBackground(new Color(161, 194, 206));
+		newPatient.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
 		newPatient.setForeground(Color.white);
 		newPatient.setFont(new Font("", Font.BOLD, 15));
 		newPatient.setOpaque(true);
-		searchPanel.setBackground(new Color(170, 170, 170));
+		searchPanel.setBackground(new Color(161, 194, 206));
 
 		// Borders
 		titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 60, 0, 60));

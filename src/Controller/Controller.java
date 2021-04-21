@@ -22,7 +22,7 @@ public class Controller {
     public Controller() {
         this.model = new Model(this);
         this.logic = new Logic();
-        setLoginGUIVis();
+        setMainGUIVis();
     }
 
     public void setMainGUIVis() {
