@@ -14,21 +14,8 @@ public class DetailGUI extends GUI{
 
 	private Controller controller;
 
+	private JLabel label;
 	private JLabel newPatient = new JLabel("New Patient");
-	private JLabel patientID = new JLabel("Patient ID:");
-	private JLabel nachname = new JLabel("Nachname:", JLabel.LEFT);
-	private JLabel vorname = new JLabel("Vorname:");
-	private JLabel geschlecht = new JLabel("Geschlecht:");
-	private JLabel dob = new JLabel("DOB:");
-	private JLabel alter = new JLabel("Alter:");
-	private JLabel groesse = new JLabel("Grösse:");
-	private JLabel gewicht = new JLabel("Gewicht:");
-	private JLabel wohnort = new JLabel("Wohnort:");
-	private JLabel infos = new JLabel("Infos:");
-	private JLabel medikamente = new JLabel("Medikamente:");
-	private JLabel status = new JLabel("Status:");
-	private JLabel arzt = new JLabel("Arzt:");
-	private JLabel vorerkrankungen = new JLabel("Vorerkrankungen:");
 
 	private JTextField patientIdF = new JTextField("");
 	private JTextField nachnameF = new JTextField("");
@@ -39,7 +26,6 @@ public class DetailGUI extends GUI{
 	DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/uu");
 	DateField dateField = new DateField(dateFormatter);
 
-	private JTextField alterF = new JTextField("");
 	private JTextField groesseF = new JTextField("");
 	private JTextField gewichtF = new JTextField("");
 	private JTextField wohnortF = new JTextField("");
@@ -65,7 +51,7 @@ public class DetailGUI extends GUI{
 	private void addElements(int index){
 		// Layout
 		setLayout(new BorderLayout());
-		formular.setLayout(new GridLayout(14,2,5,10));
+		formular.setLayout(new GridLayout(13,2,5,10));
 		titlePanel.setLayout(new BorderLayout());
 		buttonsPanel.setLayout(new GridLayout(1,2));
 		add(formular, BorderLayout.CENTER);
@@ -77,58 +63,55 @@ public class DetailGUI extends GUI{
 
 		titlePanel.add(newPatient);
 		newPatient.setText(patient.getNachname());
-		formular.add(patientID);
+		formular.add(getLabel("Patient ID::"));
 		formular.add(patientIdF);
 		patientIdF.setText(patient.getPatientID());
 		patientIdF.setEditable(false);
-		formular.add(nachname);
+		formular.add(getLabel("Nachname:"));
 		formular.add(nachnameF);
 		nachnameF.setText(patient.getNachname());
 		nachnameF.setEditable(false);
-		formular.add(vorname);
+		formular.add(getLabel("Vorname:"));
 		formular.add(vornameF);
 		vornameF.setText(patient.getVorname());
 		vornameF.setEditable(false);
-		formular.add(geschlecht);
+		formular.add(getLabel("Geschlecht:"));
 		formular.add(geschlechtF);
 		geschlechtF.setText(patient.getGeschlecht());
 		geschlechtF.setEditable(false);
-		formular.add(dob);
+		formular.add(getLabel("DOB:"));
 		formular.add(dateField);
 		dateField.setText(patient.getDob());
 		dateField.setEditable(false);
-		formular.add(alter);
-		formular.add(alterF);
-		alterF.setEditable(false);
-		formular.add(status);
+		formular.add(getLabel("Status:"));
 		formular.add(statusF);
 		statusF.setText(patient.getStatus());
 		statusF.setEditable(false);
-		formular.add(groesse);
+		formular.add(getLabel("Grösse:"));
 		formular.add(groesseF);
 		groesseF.setText(String.valueOf(patient.getGroesse()));
 		groesseF.setEditable(false);
-		formular.add(gewicht);
+		formular.add(getLabel("Gewicht:"));
 		formular.add(gewichtF);
 		gewichtF.setText(String.valueOf(patient.getGewicht()));
 		gewichtF.setEditable(false);
-		formular.add(wohnort);
+		formular.add(getLabel("Wohnort:"));
 		formular.add(wohnortF);
 		wohnortF.setText(patient.getWohnort());
 		wohnortF.setEditable(false);
-		formular.add(infos);
+		formular.add(getLabel("Infos:"));
 		formular.add(infosF);
 		infosF.setText(patient.getInfos());
 		infosF.setEditable(false);
-		formular.add(medikamente);
+		formular.add(getLabel("Medikamente:"));
 		formular.add(medikamenteF);
 		medikamenteF.setText(patient.getMedikamente());
 		medikamenteF.setEditable(false);
-		formular.add(arzt);
+		formular.add(getLabel("Arzt:"));
 		formular.add(arztF);
 		arztF.setText(patient.getArzt());
 		arztF.setEditable(false);
-		formular.add(vorerkrankungen);
+		formular.add(getLabel("Vorerkrankungen:"));
 		formular.add(vorerkrankungenF);
 		vorerkrankungenF.setText(patient.getVorerkrankungen());
 		vorerkrankungenF.setEditable(false);
@@ -138,48 +121,7 @@ public class DetailGUI extends GUI{
 
 		// Design
 		newPatient.setFont(new Font("",Font.PLAIN,30));
-		patientID.setBackground(new Color(189,191,242));
-		patientID.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		patientID.setOpaque(true);
-		nachname.setBackground(new Color(189,191,242));
-		nachname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		nachname.setOpaque(true);
-		vorname.setBackground(new Color(189,191,242));
-		vorname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		vorname.setOpaque(true);
-		geschlecht.setBackground(new Color(189,191,242));
-		geschlecht.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		geschlecht.setOpaque(true);
-		dob.setBackground(new Color(189,191,242));
-		dob.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		dob.setOpaque(true);
-		alter.setBackground(new Color(189,191,242));
-		alter.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		alter.setOpaque(true);
-		status.setBackground(new Color(189,191,242));
-		status.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		status.setOpaque(true);
-		groesse.setBackground(new Color(189,191,242));
-		groesse.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		groesse.setOpaque(true);
-		gewicht.setBackground(new Color(189,191,242));
-		gewicht.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		gewicht.setOpaque(true);
-		wohnort.setBackground(new Color(189,191,242));
-		wohnort.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		wohnort.setOpaque(true);
-		infos.setBackground(new Color(189,191,242));
-		infos.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		infos.setOpaque(true);
-		medikamente.setBackground(new Color(189,191,242));
-		medikamente.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		medikamente.setOpaque(true);
-		arzt.setBackground(new Color(189,191,242));
-		arzt.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		arzt.setOpaque(true);
-		vorerkrankungen.setBackground(new Color(189,191,242));
-		vorerkrankungen.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		vorerkrankungen.setOpaque(true);
+
 
 
 		// Borders
@@ -194,7 +136,15 @@ public class DetailGUI extends GUI{
 		});
 		edit.addActionListener(e -> controller.setEditGUIVis(index));
 	}
-
+	private JLabel getLabel(String name){
+		label = new JLabel(name);
+		label.setBackground(new Color(161, 194, 206));
+		label.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
+		label.setForeground(Color.white);
+		label.setFont(new Font("", Font.BOLD,14));
+		label.setOpaque(true);
+		return label;
+	}
 	public void DisposeView() {
 		this.dispose();
 	}
