@@ -9,7 +9,8 @@ public class LoginGUI extends GUI{
 
     private Controller controller;
 
-    private JLabel title = new JLabel("Login", JLabel.CENTER);
+    ImageIcon personIcon = new ImageIcon("src/images/user.png");
+    private JLabel title = new JLabel("Login", personIcon, JLabel.LEFT);
     private JLabel username = new JLabel("Username:");
     private JLabel password = new JLabel("Password:");
 
@@ -18,7 +19,8 @@ public class LoginGUI extends GUI{
     private JPasswordField passwordF = new JPasswordField();
     private JTextField invisible2 = new JTextField();
 
-    private JButton login = new JButton("Login");
+    ImageIcon loginIcon = new ImageIcon("src/images/login.png");
+    private JButton login = new JButton(loginIcon);
 
     public LoginGUI(Controller controller) {
         super("Login", 536, 383);
@@ -36,7 +38,7 @@ public class LoginGUI extends GUI{
         drF.setBounds(276,115,170,30);
         password.setBounds(123,195,100,30);
         passwordF.setBounds(276,195,170,30);
-        title.setBounds(160,25,200,30);
+        title.setBounds(200,25,200,30);
         login.setBounds(160,285,200,30);
     }
 
@@ -52,10 +54,17 @@ public class LoginGUI extends GUI{
         add(login);
 
         // Design
-        title.setFont(new Font("",Font.PLAIN,25));
-        username.setFont(new Font("",Font.PLAIN,15));
-        password.setFont(new Font("",Font.PLAIN,15));
+        title.setFont(new Font("",Font.BOLD,25));
+        title.setForeground(Color.white);
+        username.setFont(new Font("",Font.BOLD,15));
+        username.setForeground(Color.white);
+        password.setFont(new Font("",Font.BOLD,15));
+        password.setForeground(Color.white);
         login.setFont(new Font("",Font.PLAIN,15));
+        getContentPane().setBackground( new Color(161, 194, 206) );
+        login.setOpaque(false);
+        login.setContentAreaFilled(false);
+        login.setBorderPainted(false);
 
         //Button
         login.addActionListener(e -> {
