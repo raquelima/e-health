@@ -23,19 +23,8 @@ public class NewPatientGUI extends GUI{
     private JPanel buttonsPanel = new JPanel();
 
     ImageIcon personIcon = new ImageIcon("src/images/personIcon.png");
+    private JLabel label;
     private JLabel newPatient = new JLabel("New Patient", personIcon, JLabel.LEFT);
-    private JLabel nachname = new JLabel("Nachname:", JLabel.LEFT);
-    private JLabel vorname = new JLabel("Vorname:");
-    private JLabel geschlecht = new JLabel("Geschlecht:");
-    private JLabel dob = new JLabel("DOB:");
-    private JLabel groesse = new JLabel("Grösse:");
-    private JLabel gewicht = new JLabel("Gewicht:");
-    private JLabel wohnort = new JLabel("Wohnort:");
-    private JLabel infos = new JLabel("Infos:");
-    private JLabel medikamente = new JLabel("Medikamente:");
-    private JLabel status = new JLabel("Status:");
-    private JLabel arzt = new JLabel("Arzt:");
-    private JLabel vorerkrankungen = new JLabel("Vorerkrankungen:");
 
     private JTextField nachnameF = new JTextField("");
     private JTextField vornameF = new JTextField("");
@@ -74,30 +63,30 @@ public class NewPatientGUI extends GUI{
 
         // Elements
         titlePanel.add(newPatient);
-        formular.add(nachname);
+        formular.add(getLabel("Nachname:"));
         formular.add(nachnameF);
-        formular.add(vorname);
+        formular.add(getLabel("Vorname:"));
         formular.add(vornameF);
-        formular.add(geschlecht);
+        formular.add(getLabel("Geschlecht:"));
         formular.add(geschlechtF);
-        formular.add(dob);
+        formular.add(getLabel("DOB:"));
         formular.add(dateField);
         dateField.setValue(LocalDate.now(ZoneId.systemDefault()));
-        formular.add(status);
+        formular.add(getLabel("Status:"));
         formular.add(statusF);
-        formular.add(groesse);
+        formular.add(getLabel("Grösse:"));
         formular.add(groesseF);
-        formular.add(gewicht);
+        formular.add(getLabel("Gewicht:"));
         formular.add(gewichtF);
-        formular.add(wohnort);
+        formular.add(getLabel("Wohnort:"));
         formular.add(wohnortF);
-        formular.add(infos);
+        formular.add(getLabel("Infos:"));
         formular.add(infosF);
-        formular.add(medikamente);
+        formular.add(getLabel("Medikamente:"));
         formular.add(medikamenteF);
-        formular.add(arzt);
+        formular.add(getLabel("Arzt:"));
         formular.add(drF);
-        formular.add(vorerkrankungen);
+        formular.add(getLabel("Vorerkrankungen:"));
         formular.add(vorerkrankungenF);
         buttonsPanel.add(cancel);
         buttonsPanel.add(add);
@@ -106,66 +95,8 @@ public class NewPatientGUI extends GUI{
         titlePanel.setBackground(new Color(161, 194, 206));
         newPatient.setFont(new Font("",Font.PLAIN,30));
         newPatient.setForeground(new Color(68, 68, 68));
-        nachname.setBackground(new Color(161, 194, 206));
-        nachname.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        nachname.setForeground(Color.white);
-        nachname.setFont(new Font("", Font.BOLD,14));
-        nachname.setOpaque(true);
-        vorname.setBackground(new Color(161, 194, 206));
-        vorname.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        vorname.setForeground(Color.white);
-        vorname.setFont(new Font("", Font.BOLD,14));
-        vorname.setOpaque(true);
-        geschlecht.setBackground(new Color(161, 194, 206));
-        geschlecht.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        geschlecht.setForeground(Color.white);
-        geschlecht.setFont(new Font("", Font.BOLD,14));
-        geschlecht.setOpaque(true);
-        dob.setBackground(new Color(161, 194, 206));
-        dob.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        dob.setForeground(Color.white);
-        dob.setFont(new Font("", Font.BOLD,14));
-        dob.setOpaque(true);
-        status.setBackground(new Color(161, 194, 206));
-        status.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        status.setForeground(Color.white);
-        status.setFont(new Font("", Font.BOLD,14));
-        status.setOpaque(true);
-        groesse.setBackground(new Color(161, 194, 206));
-        groesse.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        groesse.setForeground(Color.white);
-        groesse.setFont(new Font("", Font.BOLD,14));
-        groesse.setOpaque(true);
-        gewicht.setBackground(new Color(161, 194, 206));
-        gewicht.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        gewicht.setForeground(Color.white);
-        gewicht.setFont(new Font("", Font.BOLD,14));
-        gewicht.setOpaque(true);
-        wohnort.setBackground(new Color(161, 194, 206));
-        wohnort.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        wohnort.setForeground(Color.white);
-        wohnort.setFont(new Font("", Font.BOLD,14));
-        wohnort.setOpaque(true);
-        infos.setBackground(new Color(161, 194, 206));
-        infos.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        infos.setForeground(Color.white);
-        infos.setFont(new Font("", Font.BOLD,14));
-        infos.setOpaque(true);
-        medikamente.setBackground(new Color(161, 194, 206));
-        medikamente.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        medikamente.setForeground(Color.white);
-        medikamente.setFont(new Font("", Font.BOLD,14));
-        medikamente.setOpaque(true);
-        arzt.setBackground(new Color(161, 194, 206));
-        arzt.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        arzt.setForeground(Color.white);
-        arzt.setFont(new Font("", Font.BOLD,14));
-        arzt.setOpaque(true);
-        vorerkrankungen.setBackground(new Color(161, 194, 206));
-        vorerkrankungen.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
-        vorerkrankungen.setForeground(Color.white);
-        vorerkrankungen.setFont(new Font("", Font.BOLD,14));
-        vorerkrankungen.setOpaque(true);
+
+
 
         // Borders
         formular.setBorder(BorderFactory.createEmptyBorder(10,40,15,40));
@@ -206,7 +137,15 @@ public class NewPatientGUI extends GUI{
         //Window Settings
         setVisible(true);
     }
-
+    private JLabel getLabel(String name){
+        label = new JLabel(name);
+        label.setBackground(new Color(161, 194, 206));
+        label.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
+        label.setForeground(Color.white);
+        label.setFont(new Font("", Font.BOLD,14));
+        label.setOpaque(true);
+        return label;
+    }
     public void DisposeView() {
         this.dispose();
     }

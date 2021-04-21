@@ -19,20 +19,8 @@ public class EditGUI extends GUI{
 
     private Controller controller;
 
+    private JLabel label;
     private JLabel newPatient = new JLabel("New Patient");
-    private JLabel patientID = new JLabel("Patient ID:");
-    private JLabel nachname = new JLabel("Nachname:", JLabel.LEFT);
-    private JLabel vorname = new JLabel("Vorname:");
-    private JLabel geschlecht = new JLabel("Geschlecht:");
-    private JLabel dob = new JLabel("DOB:");
-    private JLabel groesse = new JLabel("Grösse:");
-    private JLabel gewicht = new JLabel("Gewicht:");
-    private JLabel wohnort = new JLabel("Wohnort:");
-    private JLabel infos = new JLabel("Infos:");
-    private JLabel medikamente = new JLabel("Medikamente:");
-    private JLabel status = new JLabel("Status:");
-    private JLabel arzt = new JLabel("Arzt:");
-    private JLabel vorerkrankungen = new JLabel("Vorerkrankungen:");
 
     private JTextField patientIdF = new JTextField("");
     private JTextField nachnameF = new JTextField("");
@@ -85,44 +73,44 @@ public class EditGUI extends GUI{
 
         titlePanel.add(newPatient);
         newPatient.setText(patient.getVorname() + " " + patient.getNachname());
-        formular.add(patientID);
+        formular.add(getLabel("Patient ID::"));
         formular.add(patientIdF);
         patientIdF.setText(patient.getPatientID());
         patientIdF.setEditable(false);
-        formular.add(nachname);
+        formular.add(getLabel("Nachname:"));
         formular.add(nachnameF);
         nachnameF.setText(patient.getNachname());
-        formular.add(vorname);
+        formular.add(getLabel("Vorname:"));
         formular.add(vornameF);
         vornameF.setText(patient.getVorname());
-        formular.add(geschlecht);
+        formular.add(getLabel("Geschlecht:"));
         formular.add(geschlechtF);
         geschlechtF.setSelectedItem(patient.getGeschlecht());
-        formular.add(dob);
+        formular.add(getLabel("DOB:"));
         formular.add(dateField);
         dateField.setText(patient.getDob());
-        formular.add(status);
+        formular.add(getLabel("Status:"));
         formular.add(statusF);
         statusF.setSelectedItem(patient.getStatus());
-        formular.add(groesse);
+        formular.add(getLabel("Grösse:"));
         formular.add(groesseF);
         groesseF.setText(String.valueOf(patient.getGroesse()));
-        formular.add(gewicht);
+        formular.add(getLabel("Gewicht:"));
         formular.add(gewichtF);
         gewichtF.setText(String.valueOf(patient.getGewicht()));
-        formular.add(wohnort);
+        formular.add(getLabel("Wohnort:"));
         formular.add(wohnortF);
         wohnortF.setText(patient.getWohnort());
-        formular.add(infos);
+        formular.add(getLabel("Infos:"));
         formular.add(infosF);
         infosF.setText(patient.getInfos());
-        formular.add(medikamente);
+        formular.add(getLabel("Medikamente:"));
         formular.add(medikamenteF);
         medikamenteF.setText(patient.getMedikamente());
-        formular.add(arzt);
+        formular.add(getLabel("Arzt:"));
         formular.add(drF);
         drF.setSelectedItem(patient.getArzt());
-        formular.add(vorerkrankungen);
+        formular.add(getLabel("Vorerkrankungen:"));
         formular.add(vorerkrankungenF);
         vorerkrankungenF.setText(patient.getVorerkrankungen());
 
@@ -131,45 +119,7 @@ public class EditGUI extends GUI{
 
         // Design
         newPatient.setFont(new Font("",Font.PLAIN,30));
-        patientID.setBackground(new Color(189,191,242));
-        patientID.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        patientID.setOpaque(true);
-        nachname.setBackground(new Color(189,191,242));
-        nachname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        nachname.setOpaque(true);
-        vorname.setBackground(new Color(189,191,242));
-        vorname.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        vorname.setOpaque(true);
-        geschlecht.setBackground(new Color(189,191,242));
-        geschlecht.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        geschlecht.setOpaque(true);
-        dob.setBackground(new Color(189,191,242));
-        dob.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        dob.setOpaque(true);
-        status.setBackground(new Color(189,191,242));
-        status.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        status.setOpaque(true);
-        groesse.setBackground(new Color(189,191,242));
-        groesse.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        groesse.setOpaque(true);
-        gewicht.setBackground(new Color(189,191,242));
-        gewicht.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        gewicht.setOpaque(true);
-        wohnort.setBackground(new Color(189,191,242));
-        wohnort.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        wohnort.setOpaque(true);
-        infos.setBackground(new Color(189,191,242));
-        infos.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        infos.setOpaque(true);
-        medikamente.setBackground(new Color(189,191,242));
-        medikamente.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        medikamente.setOpaque(true);
-        arzt.setBackground(new Color(189,191,242));
-        arzt.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        arzt.setOpaque(true);
-        vorerkrankungen.setBackground(new Color(189,191,242));
-        vorerkrankungen.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-        vorerkrankungen.setOpaque(true);
+
 
 
         // Borders
@@ -207,7 +157,15 @@ public class EditGUI extends GUI{
             }
         });
     }
-
+    private JLabel getLabel(String name){
+        label = new JLabel(name);
+        label.setBackground(new Color(161, 194, 206));
+        label.setBorder(BorderFactory.createLineBorder(new Color(135, 176, 192)));
+        label.setForeground(Color.white);
+        label.setFont(new Font("", Font.BOLD,14));
+        label.setOpaque(true);
+        return label;
+    }
     public void DisposeView() {
         this.dispose();
     }
